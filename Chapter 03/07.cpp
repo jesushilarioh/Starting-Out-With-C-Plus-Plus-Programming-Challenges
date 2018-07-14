@@ -19,7 +19,7 @@
 *           office profit.)
 *
 * 	Jesus Hilario Hernandez
-* 	January 7th 2017
+* 	July 14th 2018
 *
 ********************************************************************/
 #include <iostream>
@@ -29,37 +29,46 @@ using namespace std;
 
 int main()
 {
-    // Variables
+    // Constant variables
+    const float ADULT_PRICE = 10,
+                CHILD_PRICE = 6,
+                PROFIT = .20;
+
     string movie_name;
-    int adult_tickets,
-        child_tickets;
 
-    float total_cost,
-          theater_percentage;
+    int adult_tkt,
+        child_tkt;
 
-    // ask for the name of the movie
-    cout << endl;
-    cout << "What was the name of the movie? ";
+    float total,
+          theater_per;
+
+    // Ask for movie name
+    cout << "\nWhat was the name of the movie? ";
     getline(cin, movie_name);
 
-    // ask how many adult and child tickets were sold
-    cout << "How many adult tickets? ";
-    cin >> adult_tickets;
+    // Ask for number of adult and child tickets
+    cout << "\nHow many adult tickets? ";
+    cin >> adult_tkt;
     cout << "How many child tickets? ";
-    cin >> child_tickets;
+    cin >> child_tkt;
 
-    // calculate the gross and net box office profit
-    total_cost = (adult_tickets * 10) + (child_tickets * 6);
-    theater_percentage = total_cost * .20;
+    // Calculate gross and net profit
+    total = (adult_tkt * ADULT_PRICE) + (child_tkt * CHILD_PRICE);
+    theater_per = total * PROFIT;
 
-    // display the report
+    // Display report
     cout << setprecision(2) << fixed;
-    cout << "Movie Name: " << movie_name << endl;
-    cout << "Adult tickets sold:             " << setw(10) << adult_tickets << endl;
-    cout << "Child tickets sold:             " << setw(10) << child_tickets << endl;
-    cout << "Total cost:                    $" << setw(10) << total_cost << endl;
-    cout << "Gross Box Office Profit @ %20: $" << setw(10) << theater_percentage << endl;
-    cout << endl;
+    cout << "\nMovie Name: \"";
+    cout << movie_name << '\"' <<endl;
+    cout << "Adult tickets sold:      " << setw(10);
+    cout << adult_tkt;
+    cout << "\nChild tickets sold:      " << setw(10);
+    cout << child_tkt;
+    cout << "\nTotal cost:              " << setw(10);
+    cout << total;
+    cout << "\nGross Box Office Profit: " << setw(10);
+    cout << theater_per << '\n' <<endl;
 
+    // Terminate Program
     return 0;
 }

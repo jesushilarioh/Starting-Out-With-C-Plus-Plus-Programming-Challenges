@@ -14,7 +14,7 @@
 *       of cookies.
 *
 * 	Jesus Hilario Hernandez
-* 	January 7th 2017
+* 	July 14th 2018
 *
 ********************************************************************/
 #include <iostream>
@@ -24,34 +24,35 @@ using namespace std;
 
 int main()
 {
-    float num_of_cookies_to_make,
-          total_cups_butter,
-          total_cups_sugar,
-          total_cups_flour;
-    // Ask the user how many cookies they want to make
-    cout << setprecision(4);
-    cout << "\nHow many cookies do you want to make? ";
-    cin >> num_of_cookies_to_make;
+    // Variables
+    const float COOKIES = 48,
+                SUGAR = 1.5,
+                BUTTER = 1,
+                FLOUR = 2.75;
 
-    // Calculate the amount of ingredients it takes to make
-        // 1.5 cup of sugar   = 48 cookies
-            // (1.5 / y) * (48 / x)
-    //                                     = (1.5 / x) * (48/num_of_cookies_to_make);
-    //                                     = (48x) / (1.5 * num_of_cookies_to_make)
-    // 1.5 * num_of_cookies_to_make        = 48x
-    // (1.5 * num_of_cookies_to_make) / 48 = x
-    total_cups_sugar = (1.5 * num_of_cookies_to_make) / 48;
-    total_cups_butter = (1 * num_of_cookies_to_make) / 48;
-    total_cups_flour = (2.75 * num_of_cookies_to_make) / 48;
-        // 1 cup of butter    = 48 cookies
-        // 2.75 cups of flour = 48 cookies
-    // Display the number of cups for each ingredient.
-    cout <<"To make " << num_of_cookies_to_make << " cookies ";
-    cout << "you will need the following ingredients: " << endl << endl;
-    cout << " - " << total_cups_sugar << " cups of sugar" << endl;
-    cout << " - " << total_cups_butter << " cups of butter" << endl;
-    cout << " - " << total_cups_flour << " cups of flour" << endl;
+    float num_cookies,
+          total_butter,
+          total_sugar,
+          total_flour;
+
+    // Ask user how many cookies to make
+    cout << "\nHow many cookies do you want to make? ";
+    cin >> num_cookies;
+
+    // Calculate ingredients
+    total_sugar  = (SUGAR * num_cookies) / COOKIES;
+    total_flour  = (FLOUR * num_cookies) / COOKIES;
+    total_butter = (BUTTER * num_cookies) / COOKIES;
+
+    // Display amount of ingredients
+    cout << setprecision(2) << fixed;
+    cout << "\nTo make " << num_cookies << " cookies ";
+    cout << "you will need the following ingredients: \n";
+    cout << " - " << total_butter << " cups of butter\n";
+    cout << " - " << total_sugar  << " cups of sugar\n";
+    cout << " - " << total_flour  << " cups of flour\n";
     cout << endl;
 
+    // Terminate Program
     return 0;
 }

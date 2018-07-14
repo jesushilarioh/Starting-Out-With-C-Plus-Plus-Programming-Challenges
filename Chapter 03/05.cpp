@@ -12,41 +12,47 @@
 *       of females can be calculated as 12 / 20 = 0.06, or 60%.
 *
 * 	Jesus Hilario Hernandez
-* 	January 6th 2017
+* 	July 14th 2018
 *
 ********************************************************************/
 #include <iostream>
 #include <iomanip>
+
 using namespace std;
 
 int main()
 {
     // Variables
-    int number_of_males,
-        number_of_females,
-        total_num_of_students;
+    const int HUNDRED = 100;
 
-    float percentage_of_males,
-          percentage_of_females;
+    int males,
+        females,
+        total;
 
-    // Ask user for number of males and females in the class.
+    float per_males,
+          per_females;
+
+    // Ask user for number of males and females
     cout << endl;
-    cout << "How many males have register for the class: ";
-    cin >> number_of_males;
-    cout << "How many females have registered: ";
-    cin >> number_of_females;
+    cout << "How many males in the class: ";
+    cin >> males;
+    cout << "How many females: ";
+    cin >> females;
     cout << endl;
 
-    // Calculate the percentage of each with the class.
-    total_num_of_students = number_of_males + number_of_females;
-    percentage_of_males = (number_of_males / static_cast<float>(total_num_of_students)) * 100;
-    percentage_of_females = (number_of_females / static_cast<float>(total_num_of_students)) * 100;
+    // Calculate percentages
+    total = males + females;
 
-    // Display the percentage of male and females in the class.
-    cout << setprecision(2);
-    cout << "There are " << total_num_of_students << " in the class. " << endl;
-    cout << "The percentage of males in the class is %" << percentage_of_males << '.' << endl;
-    cout << "The percentage of females is %" << percentage_of_females << '.' << endl << endl;
+    per_males = (males / static_cast<float>(total)) * HUNDRED;
+
+    per_females = (females / static_cast<float>(total)) * HUNDRED;
+
+    // Display percentage
+    cout << setprecision(1) << fixed;
+    cout << "There are " << total << " students." << endl;
+    cout << "The percentage of males is %" << per_males;
+    cout << ",\nwhile, the percentage of females is %";
+    cout << per_females << ".\n" << endl;
 
     // Terminate Program
     return 0;

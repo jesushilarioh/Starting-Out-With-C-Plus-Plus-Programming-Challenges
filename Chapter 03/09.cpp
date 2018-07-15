@@ -15,44 +15,56 @@
 ********************************************************************/
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 int main()
 {
-    const int NUM_COOKIES_PER_BAG = 30,  // Number of cookies per bag
-              NUM_SERVINGS_PER_BAG = 10, // Number of servings per bag
-              NUM_CALORIES_PER_SERVING = 300;            // Calories per serving.
+    // Constant Variables
+    const int COOKIES_PER_BAG       = 30,
+              SERVINGS_PER_BAG      = 10,
+              CALORIES_PER_SERVING  = 300;
 
-    // Number of cookies per serving
-    float num_cookies_per_serving = NUM_COOKIES_PER_BAG / NUM_SERVINGS_PER_BAG,
-          num_cookies_eaten,
-          num_servings_eaten,
-          num_calories_consumed;
+    // Variables
+    float cookies_eaten,
+          servings_eaten,
+          calories_consumed,
 
-    // Ask user to input how many cookies she actually ate
+          cookies_per_serving = COOKIES_PER_BAG / SERVINGS_PER_BAG;
+
+    // Ask how many cookies eaten
     cout << endl;
-    cout << "How many cookies did you eat? ";
-    cin >> num_cookies_eaten;
+    cout << "How many cookies eaten? ";
+    cin >> cookies_eaten;
 
-    // Calculate number of servings she ate
-    num_servings_eaten = num_cookies_eaten / num_cookies_per_serving;
+    // Calculate number of servings
+    servings_eaten = cookies_eaten / cookies_per_serving;
 
-    // Calculate number of calories were consumed
-    num_calories_consumed = num_servings_eaten * NUM_CALORIES_PER_SERVING;
+    // Calculate caloires consumed
+    calories_consumed = servings_eaten * CALORIES_PER_SERVING;
 
-    // Display how many total calories were consumed
     cout << '\n' << setprecision(2) << fixed << right;
 
-    cout << "Number of cookies per bag      = " << setw(8) << NUM_COOKIES_PER_BAG << endl;
-    cout << "Number of servings per bag     = " << setw(8) << NUM_SERVINGS_PER_BAG << endl;
-    cout << "Number of calories per serving = " << setw(8) << NUM_CALORIES_PER_SERVING << endl;
-    cout << "Number of cookies per serving  = " << setw(8) << num_cookies_per_serving << endl;
-    cout << "Number of cookies eaten        = " << setw(8) << num_cookies_eaten << endl;
-    cout << "Number of servings eaten       = " << setw(8) << num_servings_eaten << endl;
-    cout << "Number of calories consumed    = " << setw(8) << num_calories_consumed << endl;
-    cout << endl;
+    cout << "Number of cookies per bag      = ";
+    cout << setw(8) << COOKIES_PER_BAG      << endl;
 
-    // Terminate program.
+    cout << "Number of servings per bag     = ";
+    cout << setw(8) << SERVINGS_PER_BAG     << endl;
+
+    cout << "Number of calories per serving = ";
+    cout << setw(8) << CALORIES_PER_SERVING << endl;
+
+    cout << "Number of cookies per serving  = ";
+    cout << setw(8) << cookies_per_serving  << endl;
+
+    cout << "Number of cookies eaten        = ";
+    cout << setw(8) << cookies_eaten        << endl;
+
+    cout << "Number of servings eaten       = ";
+    cout << setw(8) << servings_eaten       << endl;
+
+    cout << "Number of calories consumed    = ";
+    cout << setw(8) << calories_consumed    << endl;
+
+    cout << endl;
     return 0;
 }

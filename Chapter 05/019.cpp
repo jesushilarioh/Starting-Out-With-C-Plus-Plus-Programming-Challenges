@@ -10,7 +10,7 @@
 *       user is over or under budget.
 *
 * 	Jesus Hilario Hernandez
-* 	July 5th 2018
+* 	July 19th 2018
 *
 ********************************************************************/
 #include <iostream>
@@ -60,7 +60,7 @@ int main()
     // Calculate budget result
     budget_result = budget_amount - expense_total;
 
-    //display the amount that the user is over or under budget
+    //display the amount if the user is over or under budget
     cout << endl;
     if (expense_total > budget_amount)
     {

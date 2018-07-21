@@ -10,28 +10,36 @@
 *       these expenses.
 *
 * 	Jesus Hilario Hernandez
-* 	January 16th 2018
+* 	July 20th 2018
 *
 ********************************************************************/
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 int main()
 {
+    // Constant
+    const int TWELVE_MONTHS = 12;
+
+    // Variables
     float loan_payment,
           insurance,
           gas,
           oil,
           tires,
           maintenance,
-          total_monthly_cost,
-          total_annual_cost_per_year;
-
-    // Ask the user to enter monthly costs for car expenses:
-    cout << "\nEnter the following monthly costs for your automobile: ";
-    cout << endl << setprecision(2) << fixed;
+          total_monthly_exp,
+          annual_cost;
+    /**
+     * asks the user to enter the monthly
+     * costs for the following expenses incurred
+     * from operating his or her automobile loan
+     * payment, insurance, gas, oil, tires,and
+     * maintenance.
+     */
+    cout << "\nEnter the following monthly costs for your";
+    cout << "\nautomobile: " << endl;
     cout << "Loan Payment : $";
     cin >> loan_payment;
     cout << "Insurance    : $";
@@ -42,19 +50,23 @@ int main()
     cin >> oil;
     cout << "Tires        : $";
     cin >> tires;
-    cout << "Maintenance  : $";
+    cout << "Maintenae    : $";
     cin >> maintenance;
+    cout << endl;
 
-    // Calculate total monthly cost of expenses
-    total_monthly_cost = loan_payment + insurance + gas + oil + tires + maintenance;
 
-    // Calculate total annual cost of expenses
-    total_annual_cost_per_year = total_monthly_cost * 12;
+    // Calculate total monthly cost of these expenses
+    total_monthly_exp = loan_payment + insurance + gas + oil + tires + maintenance;
 
-    // Display total monthly cost
-    cout << "Monthly car expenses equals  $" << total_monthly_cost << endl;
+    // Calculate total annual cost of these expenses
+    annual_cost = total_monthly_exp  * TWELVE_MONTHS;
 
-    // Display total annual cost
-    cout << "Monthly annual cost per year $" << total_annual_cost_per_year << endl;
+    // display the total monthly cost of these expenses
+    cout << "\nMonthly car expenses = $" << total_monthly_exp;
+
+    // display the total annual cost of these expenses
+    cout << "\nTotal annual cost = $" << annual_cost;
+    cout << endl;
+
     return 0;
 }

@@ -17,28 +17,25 @@
 ********************************************************************/
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 int main()
 {
-    // Variables
-    float F, C;
+    // Variable
+    float F,
+          C;
 
-    // Ask user to enter Celsius Temp.
-    cout << endl;
-    cout << "Enter the current Celsius Temperature: ";
+    // Ask user to enter Celsius Temp
+    cout << "\nEnter the Celsius Temp: ";
     cin >> C;
 
     // Calculate Fahrenheit
-    F = ((9.0 / 5) * C) + 32;
+    F = ((9 / 5) * C ) + 32;
 
     // Display Fahrenheit
     cout << setprecision(2) << fixed << right << endl;
     cout << "Celsius    Temp = " << setw(6) << C << endl;
     cout << "Fahrenheit Temp = " << setw(6) << F << endl;
     cout << endl;
-
-    // Terminate Program
     return 0;
 }

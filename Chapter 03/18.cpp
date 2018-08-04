@@ -35,21 +35,23 @@
 ********************************************************************/
 #include <iostream>
 #include <iomanip>
-#include <cmath>
+#include <cmath>    // pow(5, 10);
 using namespace std;
 
 int main()
 {
-    const int ONE = 1,
+    // Constant
+    const int ONE     = 1,
               HUNDRED = 100;
 
-    float principal,
+    // Variables
+    float principal,                // Principal
           interest_rate,
-          amount_after_a_year,
+          amount_after_a_year,      // Amount
           total_interest,
           amount_in_savings;
 
-    int times_interest_compounded;
+    int times_interest_compounded;  // T
 
     // asks for the principal, interest rate, and number of times the interest is compounded
     cout << endl;
@@ -65,8 +67,8 @@ int main()
     cin >> times_interest_compounded;
 
     // Calculate
-    interest_rate /= HUNDRED;
-
+    interest_rate /= HUNDRED; // 4.25% == .0425
+    // Amount = Principal * (1 + Rate/T)^T
     amount_after_a_year = principal * pow((ONE + interest_rate/times_interest_compounded), times_interest_compounded);
 
     total_interest = amount_after_a_year - principal;

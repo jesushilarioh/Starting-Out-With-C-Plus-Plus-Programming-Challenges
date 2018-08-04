@@ -20,7 +20,7 @@
 *       Interest Paid:          $  1957.15
 *
 * 	Jesus Hilario Hernandez
-* 	January 9th 2017
+* 	August 3rd 2018
 *
 ********************************************************************/
 #include <iostream>
@@ -31,8 +31,13 @@ using namespace std;
 
 int main()
 {
+    // Constants
+    const int ONE = 1;
+
+    const float POINT_01 = .O1;
+
     // Variables
-    double Rate = 1,    // Monthly interest rate = Annual interest rate / 12
+    float Rate = 1,    // Monthly interest rate = Annual interest rate / 12
            N = 36,       // Number of payments
            L = 1500, // Amount of the loan
            Payment;
@@ -48,7 +53,7 @@ int main()
     cin >> N;
     // Calculate the Monthly payment
     // Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
-    Payment = ((Rate * .01) * pow(1 + (Rate * .01), N) / (pow(1 + (Rate * .01), N) - 1)) * L;
+    Payment = ((Rate * POINT_O1) * pow(ONE + (Rate * POINT_O1), N) / (pow(ONE + (Rate * POINT_O1), N) - ONE)) * L;
 
     // Display
     /************************************************

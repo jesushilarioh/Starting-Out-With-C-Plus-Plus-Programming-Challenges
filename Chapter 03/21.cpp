@@ -21,8 +21,14 @@ using namespace std;
 
 int main()
 {
+    // Constants
     const float SLICE_AREA_SIZE = 14.125,
                 PI              = 3.14159;
+
+    const int TWO  = 2,
+              FOUR = 4;
+
+    // Variables
     float d,
           r,
           Area,
@@ -42,9 +48,9 @@ int main()
 
     // Calculate the # of slices that may be taken from a pizza
     // of that size
-    slices_needed = num_of_people *= 4;             // Num Slices needed
-    r = d / 2;                                      // Calculate Radius
-    Area = PI * pow(r, 2);                          // Calculate Area
+    slices_needed = num_of_people *= FOUR;          // Num Slices needed
+    r = d / TWO;                                    // Calculate Radius
+    Area = PI * pow(r, TWO);                        // Calculate Area
     num_of_slices = Area / SLICE_AREA_SIZE;         // Num Slices per pizza
     num_of_pizzas = slices_needed /= num_of_slices; // Numb pizzas needed
 

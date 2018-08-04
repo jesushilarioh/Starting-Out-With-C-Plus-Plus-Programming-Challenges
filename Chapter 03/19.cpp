@@ -24,8 +24,8 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <iomanip>
-#include <cmath>    // pow(6, 2)
+#include <iomanip>  // setprecision() setw()
+#include <cmath>    // pow(6, 2) 6^2
 using namespace std;
 
 int main()
@@ -34,7 +34,7 @@ int main()
     const int ONE     = 1,
               HUNDRED = 100;
 
-    // Varibles
+    // Variables
     int N;
 
     float Rate,
@@ -52,12 +52,12 @@ int main()
     cout << "Number of payments? ";
     cin >> N;
 
-    // Calculations
+    // Calculation
     Rate /= HUNDRED; // 4.25% == .0425
     // Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
     Payment = ((Rate) * pow(ONE + (Rate), N) / (pow(ONE + (Rate), N) - ONE)) * L;
 
-    Rate *= HUNDRED;
+    Rate *= HUNDRED; // .0425 == 4.25
 
     amount_paid_back = N * Payment;
 

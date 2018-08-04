@@ -40,8 +40,13 @@ using namespace std;
 
 int main()
 {
+    // Constants
     const float SLICE_AREA_SIZE = 14.125,
                 PI         = 3.14159;
+
+    const int TWO = 2;
+
+    // Variables
     float d,
           r,
           Area,
@@ -54,8 +59,8 @@ int main()
 
     // Calculate the # of slices that may be taken from a pizza
     // of that size
-    r = d / 2;
-    Area = PI * pow(r, 2);
+    r = d / TWO;
+    Area = PI * pow(r, TWO);
     num_of_slices = Area / SLICE_AREA_SIZE;
 
     // Display a message telling the number of slices.

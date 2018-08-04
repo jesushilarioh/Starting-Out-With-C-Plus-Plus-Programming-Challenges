@@ -24,26 +24,24 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <cmath>    // For pow() function
-#include <iomanip>  // For formatting
-
+#include <iomanip>
+#include <cmath>    // pow(6, 2)
 using namespace std;
 
 int main()
 {
-    // Constants
-    const int ONE = 1,
+    // Constant
+    const int ONE     = 1,
               HUNDRED = 100;
 
-    // Variables
-    int N = 36;         // Number of payments
+    // Varibles
+    int N;
 
-    float Rate = 1,     // Monthly interest rate = Annual interest rate / 12
-          L = 1500,    // Amount of the loan
+    float Rate,
+          L,
           Payment,
-        amount_paid_back,
-        interest_paid;
-
+          amount_paid_back,
+          interest_paid;
 
     // Ask the user for Rate, number of paymets, and amount of the loan
     cout << endl;
@@ -54,16 +52,17 @@ int main()
     cout << "Number of payments? ";
     cin >> N;
 
-    // Calculate the Monthly payment
-    Rate /= HUNDRED;
+    // Calculations
+    Rate /= HUNDRED; // 4.25% == .0425
     // Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
     Payment = ((Rate) * pow(ONE + (Rate), N) / (pow(ONE + (Rate), N) - ONE)) * L;
 
     Rate *= HUNDRED;
 
-    amount_paid_back =  N * Payment;
+    amount_paid_back = N * Payment;
 
     interest_paid    = (N * Payment) - L;
+
     // Display
     /************************************************
      *       Loan Amount:            $ 10000.00     *
@@ -76,12 +75,27 @@ int main()
 
     cout << setprecision(2) << fixed << right << endl;
 
-    cout << "Loan Amount:           $" << setw(10) << L     << endl;
-    cout << "Monthly Interest Rate: " << setw(10) << Rate << '%' << endl;
-    cout << "Number of Payments:     " << setw(10) << N     << endl;
-    cout << "Monthly Payment:       $" << setw(10) << Payment << endl;
-    cout << "Amount Paid Back:      $" << setw(10) << N * Payment << endl;
-    cout << "Interest Paid:         $" << setw(10) << (N * Payment) - L;
+    cout << "Loan Amount:           $";
+    cout << setw(10) << L << endl;
+
+    cout << "Monthly Interest Rate: ";
+    cout << setw(10) << Rate << '%' << endl;
+
+    cout << "Number of Payments:     ";
+    cout << setw(10) << N     << endl;
+
+    cout << "Monthly Payment:       $";
+    cout << setw(10) << Payment << endl;
+
+    cout << "Amount Paid Back:      $";
+    cout << setw(10) << N * Payment << endl;
+
+    cout << "Interest Paid:         $";
+    cout << setw(10) << (N * Payment) - L;
+
     cout << endl << endl;
+
+
+    // Terminate Program
     return 0;
 }

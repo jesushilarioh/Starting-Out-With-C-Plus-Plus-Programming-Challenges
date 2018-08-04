@@ -22,42 +22,50 @@
 #include <iostream>
 #include <cstdlib>  // For rand and srand functions
 #include <ctime>    // For the time function
-
 using namespace std;
 
 int main()
 {
-    int MIN_VALUE = 100,
-        MAX_VALUE = 1000,
-        num1,
-        num2;
+    // Constant Variables
+    const int MIN_VALUE = 100,
+              MAX_VALUE = 1000;
 
-    // Get the system time.
-    unsigned seeds = time(0);
+    // Variables
+    int num_1,
+        num_2,
+        answer;
+
+    // Get system time
+    unsigned seed = time(0);
 
     // Seed the random number generator.
-    srand(seeds);
+    srand(seed);
 
+    // Explain Program
     cout << endl;
-    cout << "------------------------------------------------------\n" << endl;
-    cout << "This program displays two random numbers to be added.\n" << endl;
+    cout << "-----------------------------------------\n\n";
+    cout << "This program displays two random numbers\n";
+    cout << "to be added.\n" << endl;
 
-    // Generate two random numbers to be added
-    num1 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
-    num2 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
+    // Generate two random numbers
+    num_1 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
+    num_2 = (rand() % (MAX_VALUE - MIN_VALUE + 1)) + MIN_VALUE;
 
-    // Display problem to solve
-    cout << num1 << " + " << num2 << " = ? \n" << endl;
 
-    // Ask user to press enter to continue
-    cout << "Press \"ENTER\" to see solution";
+    answer = num_1 + num_2;
+    // Display the problem
+    cout << num_1 << " + " << num_2 << " = ? \n" << endl;
+
+    // Ask user to press ENTER to continue
+    cout << "Press \"Enter\" to see solution";
     cin.get();
     cout << endl;
 
     // Display the answer to the problem
-    cout << num1 << " + " << num2 << " = " << num1 + num2 << endl;
-    cout << "\n-------------------------------------------------------" << endl;
+    cout << num_1 << " + " << num_2 << " = ";
+    cout << answer << endl;
+    cout << "\n-----------------------------------------\n";
+    cout << endl;
 
-    // Terminate Program
     return 0;
 }

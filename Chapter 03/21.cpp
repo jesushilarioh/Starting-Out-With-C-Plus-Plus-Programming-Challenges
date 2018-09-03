@@ -15,8 +15,8 @@
 *
 ********************************************************************/
 #include <iostream>
-#include <cmath>    // For use of  pow() function.
-#include <iomanip>  // For use of setprecision() function.
+#include <iomanip>  // setprecision(3) .000
+#include <cmath>    // pow(6, 3) == 6^3
 using namespace std;
 
 int main()
@@ -46,22 +46,39 @@ int main()
     cout << "What is the diameter of the pizza in inches? ";
     cin >> d;
 
-    // Calculate the # of slices that may be taken from a pizza
-    // of that size
-    slices_needed = num_of_people *= FOUR;          // Num Slices needed
-    r = d / TWO;                                    // Calculate Radius
-    Area = PI * pow(r, TWO);                        // Calculate Area
-    num_of_slices = Area / SLICE_AREA_SIZE;         // Num Slices per pizza
-    num_of_pizzas = slices_needed /= num_of_slices; // Numb pizzas needed
+    // Calculate the # of slices 
+    // Num Slices needed
+    slices_needed = num_of_people * FOUR;
 
+    // Calculate Radius        
+    r = d / TWO;            
+
+    // Calculate Area                        
+    Area = PI * pow(r, TWO); 
+
+    // Num Slices per pizza                       
+    num_of_slices = Area / SLICE_AREA_SIZE;
+
+    // Num pizzas needed        
+    num_of_pizzas = slices_needed / num_of_slices; 
+              
+              
     // Display a message telling the number of slices.
     cout << setprecision(1) << fixed;
-    cout << "Number of people = " << num_of_people << endl;
-    cout << "Number of slices needed = " << slices_needed << endl;
-    cout << "Number of slices per Pizza = " << num_of_slices << endl;
-    cout << "Number of pizzas to order = " << slices_needed << endl;
-    cout << endl;
+    cout << "Number of people = ";
+    cout << num_of_people << endl;
 
-    // Terminate program
+    cout << "Number of slices needed = ";
+    cout << slices_needed << endl;
+
+    cout << "Number of slices per Pizza = ";
+    cout << num_of_slices << endl;
+
+    cout << "Number of pizzas to order = ";
+    cout << num_of_pizzas << endl;
+
+    cout << endl;
+    
+    // Terminate Program
     return 0;
 }

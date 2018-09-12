@@ -31,13 +31,19 @@ int main()
     // Use a decision structure to determine largest and smallest num
     if (num1 < num2)
     {
-        cout << "Number 1 (" << num1 << ") is smallest" << endl;
-        cout << "Number 2 (" << num2 << ") is largest"  << endl;
+        cout << "Number 1 (" << num1 << ")";
+        cout << " is smallest" << endl;
+
+        cout << "Number 2 (" << num2 << ")";
+        cout << " is largest"  << endl;
     }
     else
     {
-        cout << "Number 1 (" << num1 << ") is largest"  << endl;
-        cout << "Number 2 (" << num2 << ") is smallest" << endl;
+        cout << "Number 1 (" << num1 << ")";
+        cout << "is largest"  << endl;
+        
+        cout << "Number 2 (" << num2 << ")";
+        cout << " is smallest" << endl;
     }
 
     // Formatting

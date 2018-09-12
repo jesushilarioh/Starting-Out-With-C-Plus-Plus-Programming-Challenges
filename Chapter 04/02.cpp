@@ -17,9 +17,6 @@
 #include <iostream>
 using namespace std;
 
-// Functions
-void Roman_Numeral_Output (int);
-
 int main()
 {
     // Variables
@@ -33,55 +30,50 @@ int main()
     switch (userNum)
     {
         case 1:
-            Roman_Numeral_Output(userNum);
-            cout << "I\n";
+            cout << "The Roman numeral for ";
+            cout  << x << " is I\n";
             break;
         case 2:
-            Roman_Numeral_Output(userNum);
-            cout << "II\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is II\n";
             break;
         case 3:
-            Roman_Numeral_Output(userNum);
-            cout << "III\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is III\n";
             break;
         case 4:
-            Roman_Numeral_Output(userNum);
-            cout << "IV\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is IV\n";
             break;
         case 5:
-            Roman_Numeral_Output(userNum);
-            cout << "V\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is V\n";
             break;
         case 6:
-            Roman_Numeral_Output(userNum);
-            cout << "VI\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is VI\n";
             break;
         case 7:
-            Roman_Numeral_Output(userNum);
-            cout << "VII\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is VII\n";
             break;
         case 8:
-            Roman_Numeral_Output(userNum);
-            cout << "VIII\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is VIII\n";
             break;
         case 9:
-            Roman_Numeral_Output(userNum);
-            cout << "XI\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is XI\n";
             break;
         case 10:
-            Roman_Numeral_Output(userNum);
-            cout << "X\n";
+            cout << "The Roman numeral for ";
+            cout << x << " is X\n";
             break;
         default:
-            cout << "You must enter a number between 1 and 10" << endl;
-            cout << "Run the program over and try again."      << endl;
+            cout << "You must enter a number between 1 and 10\n";
+            cout << "Run the program over and try again.\n";
             break;
     }
     // Terminate program
     return 0;
-}
-
-void Roman_Numeral_Output(int x)
-{
-    cout << "The Roman numeral for " << x << " is ";
 }

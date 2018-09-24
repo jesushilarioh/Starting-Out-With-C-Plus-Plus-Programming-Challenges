@@ -16,7 +16,13 @@ using namespace std;
 
 int main()
 {
-    float l1, l2, w1, w2, rectangle1, rectangle2;
+    // Variables
+    float l1, 
+          l2, 
+          w1, 
+          w2, 
+          rectangle1, 
+          rectangle2;
 
     // Ask the user for l and w of 2 rectangles
     cout << endl;
@@ -30,7 +36,7 @@ int main()
     cin >> w2;
     cout << endl;
 
-    // Calculate area for each triangle
+    // Calculate area for each rectangle
     rectangle1 = l1 * w1;
     rectangle2 = l2 * w2;
 
@@ -44,7 +50,7 @@ int main()
 
     // Formatting last line.
     cout << endl;
-
+    
     // Terminate program
     return 0;
 }

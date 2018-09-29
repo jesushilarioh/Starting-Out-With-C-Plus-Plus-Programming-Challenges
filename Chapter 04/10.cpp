@@ -32,7 +32,8 @@ using namespace std;
 int main()
 {
     // Variables
-    int year, month;
+    int year, 
+        month;
 
     // Ask user to enter month
     cout << endl;
@@ -40,6 +41,8 @@ int main()
     cin >> month;
     cout << "Enter the year (up to 9000): ";
     cin >> year;
+
+    // Line Break
     cout << endl;
 
     // Error check for valid year
@@ -88,11 +91,13 @@ int main()
         }
     }
     else
-        cout << "Invalid year. Rerun program. Try again." << endl;
+    {
+        cout << "Invalid year. Rerun program. ";
+        cout << "Try again." << endl;
+    }
 
-    // Format line break
+    // line break
     cout << endl;
-
 
     // Terminate program
     return 0;

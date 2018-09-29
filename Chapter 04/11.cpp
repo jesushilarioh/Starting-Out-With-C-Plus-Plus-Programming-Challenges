@@ -36,7 +36,6 @@ int main()
         rand_num_2,
         rand_num_answer;
 
-    // Show 2 random numbers to be added
     // Assign system time to a variable.
     unsigned seed = time(0);
 
@@ -45,6 +44,7 @@ int main()
 
     // Generate two random numbers
     rand_num_1 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
+
     rand_num_2 = (rand() % (MAX_NUM - MIN_NUM + 1)) + MIN_NUM;
 
     // sum of the two random numbers.
@@ -56,15 +56,17 @@ int main()
     cout << "------" << endl << " ";
     cin >> user_answer;
 
-    // Decision statement (check user answer) Display: correct or incorrect
+    // Decision statement & display
     if (user_answer == rand_num_answer)
         cout << "\nCongratulations!";
     else
-        cout << "\nOops. Correct answer here: " << rand_num_answer;
+    {
+        cout << "\nOops. Correct answer here: ";
+        cout << rand_num_answer;
+    }
 
     // Format line break.
-    cout << endl;
-    cout << endl;
+    cout << endl << endl;
 
     // Terminate program
     return 0;

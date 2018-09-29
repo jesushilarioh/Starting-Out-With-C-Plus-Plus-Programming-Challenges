@@ -29,50 +29,71 @@ using namespace std;
 int main()
 {
     // Variables
-    string prime_color_1, prime_color_2;
+    string color_1, 
+           color_2;
 
     // Ask user for 2 primary colors
     cout << endl;
     cout << "Enter 1st primary color : ";
-    cin >> prime_color_1;
+    cin >> color_1;
     cout << "The 2nd primary color is: ";
-    cin >> prime_color_2;
+    cin >> color_2;
 
     // Format line break
     cout << endl;
 
-    // Decision statement and display
-    if (prime_color_1 == "red" || prime_color_1 == "Red")
+    // Error checking, calculation, & Display
+    if (color_1 == "red" || color_1 == "Red")
     {
-        if (prime_color_2 == "blue" || prime_color_2 == "Blue")
-            cout << prime_color_1 << " & " << prime_color_2 << " = purple.\n";
-        else if (prime_color_2 == "yellow" || prime_color_2 == "Yellow")
-            cout << prime_color_1 << " & " << prime_color_2 << " = Orange.\n";
+        if (color_2 == "blue" || color_2 == "Blue")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = purple.\n";
+        }
+        else if (color_2 == "yellow" || color_2 == "Yellow")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = Orange.\n";
+        }
     }
-
-    else if (prime_color_1 == "blue" || prime_color_1 == "Blue")
+    else if (color_1 == "blue" || color_1 == "Blue")
     {
-        if (prime_color_2 == "red" || prime_color_2 == "Red")
-            cout << prime_color_1 << " & " << prime_color_2 << " = purple.\n";
-        else if (prime_color_2 == "yellow" || prime_color_2 == "Yellow")
-            cout << prime_color_1 << " & " << prime_color_2 << " = green.\n";
+        if (color_2 == "red" || color_2 == "Red")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = purple.\n";
+        }
+        else if (color_2 == "yellow" || color_2 == "Yellow")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = green.\n";
+        }
     }
-    else if (prime_color_1 == "yellow")
+    else if (color_1 == "yellow" || color_1 == "Yellow")
     {
-        if (prime_color_2 == "red" || prime_color_2 == "Red" || prime_color_2 == "RED")
-            cout << prime_color_1 << " & " << prime_color_2 << " = orange.\n";
-        else if (prime_color_2 == "blue" || prime_color_2 == "Blue")
-            cout << prime_color_1 << " & " << prime_color_2 << " = green.\n";
+        if (color_2 == "red" || color_2 == "Red")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = orange.\n";
+        }
+        else if (color_2 == "blue" || color_2 == "Blue")
+        {
+            cout << color_1 << " & ";
+            cout << color_2 << " = green.\n";
+        }
     }
     else
     {
-        cout << "Neither " << prime_color_1 << " or " << prime_color_2;
-        cout << " is a NOT a prime number. \nRun the program and try again.\n";
-        cout << "Remember a primary color is either Red, Blue, or Yellow.\n";
+        cout << "Neither " << color_1;
+        cout << " nor " << color_2;
+        cout << " is a prime color. ";
+        cout << "\nRun the program and try again.\n";
+        cout << "Remember a primary color is either Red,";
+        cout << "Blue, or Yellow.\n";
     }
 
-    // Format line break
-    cout << endl;
+    // Formatting
+    cout << endl << endl;
 
     // Terminate program
     return 0;

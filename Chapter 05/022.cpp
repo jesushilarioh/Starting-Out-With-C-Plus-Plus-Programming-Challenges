@@ -9,6 +9,23 @@
 *       the square. For example, if the user enters 5, the 
 *       program should display the following:
 *
+*       XXXXX
+*       XXXXX
+*       XXXXX
+*       XXXXX
+*       XXXXX
+*
+*       If the user enters 8, the program should display the following:
+*
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*       XXXXXXXX
+*
 * 	Jesus Hilario Hernandez
 * 	July 30th 2018
 *

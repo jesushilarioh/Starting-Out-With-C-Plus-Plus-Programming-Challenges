@@ -21,71 +21,76 @@
 *       the beginning balance, display an urgent message indicating
 *       the account is overdrawn.
 *
-* 	Jesus Hilario Hernandez
-* 	February 1, 2018
+* 	Answer by: Jesus Hilario Hernandez
 *
 ********************************************************************/
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-    // Variables
-    float beginning_balance,            // Beginning balance.
-          extra_monthly_charge = 15,    // $15 extra if balance falls below $400.
-          total_monthly_charges = 10;    // Total montly charges. Initially $10
+    const double EXTRA_MONTHLY_CHARGE =  15,
+                 TEN_CENTS            = .10,
+                 EIGHT_CENTS          = .08,
+                 SIX_CENTS            = .06,
+                 FOUR_CENTS           = .04; 
 
-    int num_checks;
+    double beginning_balance,
+           total_monthly_charges = 10;
 
-    // Ask for beginning balance
+    int number_of_checks;
+
     cout << "\nWhat is the beginning balance? $";
     cin >> beginning_balance;
 
-    // Decision statement to decide if extra $15 apply
-    // If less than 400
+    if (beginning_balance < 0)
+        cout << "URGENT! Your account is overdrawn.";
+
     if (beginning_balance < 400)
-    {
-        total_monthly_charges += 15;
+        total_monthly_charges += EXTRA_MONTHLY_CHARGE;
 
-        // If less that 0
-        if (beginning_balance < 0)
-            cout << "URGENT! Your account is overdrawn.";
-    }
-
-    // Ask for number of checks written
     cout << "\nNumber of check written? ";
-    cin >> num_checks;
+    cin >> number_of_checks;
 
-    // Decision statement
-    // If less than 0
-    if (num_checks < 0)
+    if (number_of_checks < 0)
     {
-        cout << "Oops. Number of checks written must be 0 or more.\n";
+        cout << "Oops. "
+             << "Number of checks written must be\n" 
+             << "0 or more.\n";
         cout << "Please rerun the program and try again.";
     }
-
-    // If greater that 0
-    else
+    else 
     {
-        if (num_checks >= 0 && num_checks < 20)
-            total_monthly_charges += (num_checks * .10);
+        cout << setprecision(2) << fixed;
 
-        else if (num_checks >= 20 && num_checks <= 39)
-            total_monthly_charges += (num_checks * .08);
-
-        else if (num_checks >= 40 && num_checks <= 59)
-            total_monthly_charges += (num_checks * .06);
-
-        else if (num_checks >= 60)
-            total_monthly_charges += (num_checks * .04);
+        if (number_of_checks >= 0 && number_of_checks < 20)
+        {
+            total_monthly_charges += 
+            (number_of_checks * TEN_CENTS);
+        }
+        else if (number_of_checks >= 20 && number_of_checks <= 39)
+        {
+            total_monthly_charges += 
+            (number_of_checks * EIGHT_CENTS);
+        }
+        else if (number_of_checks >= 40 && number_of_checks <= 59)
+        {
+            total_monthly_charges += 
+            (number_of_checks * SIX_CENTS);
+        }
+        else if (number_of_checks >= 60)
+        {
+            total_monthly_charges += 
+            (number_of_checks * FOUR_CENTS);
+        }
 
         cout << "Bank's service fees for the month are: $";
         cout << total_monthly_charges << endl;
     }
 
-    // Format line break
-    cout << endl << '\n';
+    cout << endl 
+         << endl;
 
-    // Terminate program
     return 0;
 }

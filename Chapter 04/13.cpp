@@ -16,8 +16,7 @@
 *       books that he or she has purchased this month and then displays
 *       the number of points awarded.
 *
-* 	Jesus Hilario Hernandez
-* 	February 19, 2018
+* 	By: Jesus Hilario Hernandez
 *
 ********************************************************************/
 #include <iostream>
@@ -37,29 +36,20 @@ int main()
 
     // Decision statement to determine points earned
     if (books_purchased == 0)
-        cout << "0 points earned";
-
+        cout << "0 points earned\n";
     else if (books_purchased == 1)
-        cout << "5 points earned";
-
+        cout << "5 points earned\n";
     else if (books_purchased == 2)
-        cout << "15 points earned";
-
+        cout << "15 points earned\n";
     else if (books_purchased == 3)
-        cout << "30 points earned";
-
+        cout << "30 points earned\n";
     else if (books_purchased >= 4)
-        cout << "60 points earned";
-
+        cout << "60 points earned\n";
     else
     {
-        cout << "Oops. A number greater that 0 must be entered.";
-        cout << "\nPlease rerun the program and try again.";
+        cout << "Oops. A number 0 or greater must be entered.";
+        cout << "\nPlease rerun the program and try again.\n";
     }
 
-    // Format two line breaks
-    cout << endl << endl;
-
-    // Terminate program
     return 0;
 }

@@ -59,3 +59,5 @@ int main()
 
     return 0;
 }
+// Video Here: https://youtu.be/bjRY417_9Ok
+// Blog Post Here: https://jesushilarioh.com/chapter-5-11-population-tony-gaddis-starting-out-with-c-plus-plus/

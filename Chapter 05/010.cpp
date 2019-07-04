@@ -51,3 +51,5 @@ int main()
 
     return 0;
 }
+// Blog post: https://www.jesushilarioh.com/chapter-5-10-average-rainfall-tony-gaddis-starting-out-with-c-plus-plus
+// YouTube video: https://youtu.be/eWzFQKSXhwE

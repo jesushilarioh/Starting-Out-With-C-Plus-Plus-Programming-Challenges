@@ -40,11 +40,13 @@ int main()
         cout << "Enter state tax (%): "; // 
         while (
                 !(cin >> state_tax_percentage) || 
-                 state_tax_percentage < 0     || state_tax_percentage > gross_pay
+                 state_tax_percentage < 0      || 
+                 state_tax_percentage > gross_pay
               )
         {
             cout << "Error. State tax must be greater "
-                 << "that 0 \nand greater than gross pay." << "\nRe-enter state tax: ";
+                 << "that 0 \nand greater than gross pay." 
+                 << "\nRe-enter state tax: ";
             cin.clear();
             cin.ignore(123, '\n');
         }
@@ -52,11 +54,14 @@ int main()
 
         cout << "Enter federal tax (%): ";
         while (
-                !(cin >> federal_tax_percentage) || federal_tax_percentage < 0       || federal_tax_percentage > gross_pay
+                !(cin >> federal_tax_percentage) || 
+                federal_tax_percentage < 0       || 
+                federal_tax_percentage > gross_pay
               )
         {
             cout << "Error. Federal tax must be greater "
-                 << "that 0 \nand greater than gross pay." << "\nRe-enter federal tax: ";
+                 << "that 0 \nand greater than gross pay." 
+                 << "\nRe-enter federal tax: ";
             cin.clear();
             cin.ignore(123, '\n');
         }
@@ -79,7 +84,9 @@ int main()
         }
         total_FICA_withholds += FICA_withholds;
 
-        float sum = (gross_pay * (state_tax_percentage / 100)) + (gross_pay * (federal_tax_percentage / 100)) + FICA_withholds;
+        float sum = (gross_pay * (state_tax_percentage / 100))   + 
+                    (gross_pay * (federal_tax_percentage / 100)) + 
+                    FICA_withholds;
 
         while (sum > gross_pay)
         {
@@ -105,7 +112,8 @@ int main()
             cout << "Enter state tax (%): ";
             while (
                     !(cin >> state_tax_percentage) || 
-                    state_tax_percentage < 0       || state_tax_percentage > gross_pay
+                    state_tax_percentage < 0       || 
+                    state_tax_percentage > gross_pay
                   )
             {
                 cout << "Error. State tax must be "
@@ -119,7 +127,8 @@ int main()
             cout << "Enter federal tax (%): ";
             while (
                     !(cin >> federal_tax_percentage) || 
-                    federal_tax_percentage < 0       || federal_tax_percentage > gross_pay
+                    federal_tax_percentage < 0       || 
+                    federal_tax_percentage > gross_pay
                   )
             {
                 cout << "Error. Federal tax must be "
@@ -129,7 +138,8 @@ int main()
                 cin.clear();
                 cin.ignore(123, '\n');
             }
-            total_federal_tax += (gross_pay * (federal_tax_percentage / 100));
+            total_federal_tax += (gross_pay * 
+                                 (federal_tax_percentage / 100));
 
             cout << "Enter FICA withholdings: ";
             while (
@@ -147,7 +157,9 @@ int main()
             }
             total_FICA_withholds += FICA_withholds;
 
-            sum = (gross_pay * (state_tax_percentage / 100)) + (gross_pay * (federal_tax_percentage / 100)) + FICA_withholds;
+            sum = (gross_pay * (state_tax_percentage / 100))   + 
+                  (gross_pay * (federal_tax_percentage / 100)) + 
+                  FICA_withholds;
         }
 
         cout << "Enter employee # (enter 0 to end): ";

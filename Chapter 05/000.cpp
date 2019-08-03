@@ -11,7 +11,7 @@
 *           Input Validation: Do not accept a negative starting number.
 *
 * 	Jesus Hilario Hernandez
-* 	March 12th 2018
+* 	August 3rd 2019
 *
 ********************************************************************/
 #include <iostream>

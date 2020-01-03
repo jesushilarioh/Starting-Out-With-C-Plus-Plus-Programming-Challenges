@@ -1,9 +1,12 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 using namespace std;
 int main()
 {
+    ofstream outputFile;
+
     const int MONTHS = 12;
     
     float starting_balance,
@@ -100,31 +103,38 @@ int main()
         total_interest_earned += (interest_rate);
     } // for loop end
 
+    // 1. open
+    outputFile.open("savings_account_report.txt");
+    
+    // 2. process file
     if(balance < 0)
     {
-        cout << "I'm sorry, your account has been closed\n"; 
-        cout << "due to having a negative balance." << endl;
+        outputFile << "I'm sorry, your account has been closed\n"; 
+        outputFile << "due to having a negative balance." << endl;
     }
     else
     {
-        cout << setprecision(2) << fixed << endl;
-        cout << "Starting balance            = $" 
+        outputFile << setprecision(2) << fixed << endl;
+        outputFile << "Starting balance            = $" 
              << starting_balance << endl;
 
-        cout << "Ending balance              = $" 
+        outputFile << "Ending balance              = $" 
              << balance << endl;
 
-        cout << "Total amount in deposits    = $" 
+        outputFile << "Total amount in deposits    = $" 
              << total_deposits << endl;
 
-        cout << "Total amount in withdrawals = $" 
+        outputFile << "Total amount in withdrawals = $" 
              << total_withdrawn << endl;
 
-        cout << "Total interest earned       = $" 
+        outputFile << "Total interest earned       = $" 
              << total_interest_earned 
              << endl 
              << endl;
     }
-    
+
+    // 3. close
+    outputFile.close();
+
     return 0;
 }

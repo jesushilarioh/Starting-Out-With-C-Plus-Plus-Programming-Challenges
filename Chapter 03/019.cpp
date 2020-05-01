@@ -7,7 +7,8 @@ int main()
 {
     // Constant
     const int ONE     = 1,
-              HUNDRED = 100;
+              HUNDRED = 100,
+              NUMBER_OF_MONTHS = 12;
     
     // Variables
     int N;
@@ -28,6 +29,7 @@ int main()
     cin >> N;
     
     // Calculation
+    Rate /= NUMBER_OF_MONTHS;
     Rate /= HUNDRED; // 4.25% == .0425
     // Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
     Payment = ((Rate) * pow(ONE + (Rate), N) / (pow(ONE + (Rate), N) - ONE)) * L;

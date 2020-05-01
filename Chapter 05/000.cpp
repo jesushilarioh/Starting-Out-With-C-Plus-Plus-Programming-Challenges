@@ -1,151 +1,64 @@
 #include <iostream>
-#include <iomanip>
 #include <fstream>
 
 using namespace std;
-int main()
+int main() 
 {
-    ofstream outputFile;
+    // Declare input file stream object.
+    ifstream inputFile;
 
-    const int MONTHS = 12;
+    // Variables
+    double sum = 0,
+           total = 0,
+           average,
+           number;
+
+    // 1. Open file
+    // 2. Process file
+    // 3. Close file
     
-    float starting_balance,
-          annual_interest_rate,
-          amount_deposited,
-          amount_withdrawn,
+    inputFile.open("Random.txt");
 
-          interest_rate,
-          monthly_interest_rate,
-          
-          balance,
-          total_deposits,
-          total_withdrawn,
-          total_interest_earned;
-
-    int months_since_established;
-
-    // 1. Open File
-    outputFile.open("savings_account_report.txt");
-
-    // 2. Process File
-    if (outputFile.fail())
-    {
-        cout << "Error opening file" << endl;
-    }
+    // Check if file opens successfully
+    if (inputFile.fail()) 
+    {     
+        // Display error if file did not open
+        cout << "Error opening the file." << endl;
+    } 
     else
     {
-        cout << "\nEnter annual interest rate: ";
-        while (!(cin >> annual_interest_rate))
+        // 2. Process file
+        // read from "Random.txt" file until the eof is reached.
+        while (inputFile >> number)
         {
-            cout << "Error: a number must be entered... ";
-            cin.clear();
-            cin.ignore(123, '\n');
+            // Add each number in the file to the sum variable
+            sum += number;
+            // Keep a running total of the number of numbers in "Random.txt" file
+            total++;
         }
 
-        cout << "Enter starting balance: ";
-        while (!(cin >> starting_balance))
-        {
-            cout << "Error: a number must be entered... ";
-            cin.clear();
-            cin.ignore(123, '\n');
-        }
-
-        balance = starting_balance;
-
-        cout << "Enter # of months passed since account "
-             << "was established: ";
-        while (!(cin >> months_since_established) || 
-                months_since_established < 0)
-        {
-            cout << "Error: a number must be entered... ";
-            cin.clear();
-            cin.ignore(123, '\n');
-        }
-
-        monthly_interest_rate = annual_interest_rate / MONTHS;
-
-        for (int i = 0; i < months_since_established; i++)
-        {
-            cout << "Enter the amount deposited for month " 
-                 << (i + 1) << ": ";
-            while (!(cin >> amount_deposited) || 
-                    amount_deposited < 0)
-            {
-                cout << "Error: a positive number must be "
-                     << "entered.\nEnter the amount deposited "
-                     << "for month " 
-                     << (i + 1) << ": ";
-                cin.clear();
-                cin.ignore(123, '\n');
-            }
-
-            total_deposits += amount_deposited;
-            balance += amount_deposited;
-
-            if (balance < 0)
-                break;
-
-            cout << "Enter the amount withdrawn for month " 
-                 << (i + 1) << ": ";
-            while (!(cin >> amount_withdrawn) || 
-                    amount_withdrawn < 0)
-            {
-                cout << "Error: a positive number must be "
-                     << "entered. Enter the amount withdrawn "
-                     << "for month " 
-                     << (i + 1) << ": ";
-                cin.clear();
-                cin.ignore(123, '\n');
-            }
-
-            total_withdrawn += amount_withdrawn;
-            balance -= amount_withdrawn;
-
-            if (balance < 0)
-                break;
-
-            interest_rate = (monthly_interest_rate * balance);
-            balance += interest_rate;
-
-            if (balance < 0)
-                break;
-
-            total_interest_earned += (interest_rate);
-        } // for loop end
-
-        if(balance < 0)
-        {
-            outputFile << "I'm sorry, your account has been closed\n"; 
-            outputFile << "due to having a negative balance." << endl;
-        }
-        else
-        {
-            outputFile << setprecision(2) << fixed << endl;
-            outputFile << "Starting balance            = $" 
-                       << starting_balance << endl;
-
-            outputFile << "Ending balance              = $" 
-                       << balance << endl;
-
-            outputFile << "Total amount in deposits    = $" 
-                       << total_deposits << endl;
-
-            outputFile << "Total amount in withdrawals = $" 
-                       << total_withdrawn << endl;
-
-            outputFile << "Total interest earned       = $" 
-                       << total_interest_earned 
-                       << endl 
-                       << endl;
-        }
-
-        // 3. Close.
-        outputFile.close();
-        // Display file closed
-        cout << "\nReport recorded to "
-             << "\"savings_account_report.txt\" file.\n" 
+        // Display the total number of numbers in "Random.txt" file
+        cout << "There are " << total << " numbers in "
+             << "the Random.txt file" 
              << endl;
-    }
 
+        // Display the sum of all number in "Random.txt" file
+        cout << "The sum of all numbers in Random.txt is " 
+             << sum 
+             << endl;
+        
+        // Find the average of all the numbers in the file "Random.txt"
+        average = sum / total;
+
+        // Display average
+        cout << "The average of those numbers is " 
+             << average 
+             << endl;
+
+        // 3. Close file
+        inputFile.close();
+    }
+    
+    // Terminate
     return 0;
 }

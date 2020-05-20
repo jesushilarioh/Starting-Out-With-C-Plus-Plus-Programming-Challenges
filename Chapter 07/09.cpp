@@ -46,11 +46,13 @@ using namespace std;
 
 int inputValidate(int, int = 0);
 double inputValidate(double, double = 15.00);
+void getEmployeeInfo(const int, int[], double[], double[], double[]);
+void displayEmployeeInfo(const int, const int, const double);
 
 int main()
 {
     const int NUMBER_OF_EMPLOYEES = 7;
-    long empId[] = { 5658845, 
+    int empId[] = { 5658845, 
                      4520125, 
                      7895122, 
                      8777541, 
@@ -58,35 +60,14 @@ int main()
                      1302850, 
                      7580489 };
 
-    int    hours[NUMBER_OF_EMPLOYEES];
-    double payRate[NUMBER_OF_EMPLOYEES], 
+    double hours[NUMBER_OF_EMPLOYEES],
+           payRate[NUMBER_OF_EMPLOYEES], 
            wages[NUMBER_OF_EMPLOYEES];
 
-    for (int i = 0; i < NUMBER_OF_EMPLOYEES; i++)
-    {
-        cout << "Enter info for employee #" << empId[i] << " :" << endl; 
-
-        cout << "hours    =  ";
-        hours[i] = inputValidate(hours[i]);
-
-        cout << "pay rate = $";
-        payRate[i] = inputValidate(payRate[i]);
-
-        wages[i] = hours[i] * payRate[i];
-
-        cout << endl;
-    }
+    getEmployeeInfo(NUMBER_OF_EMPLOYEES, empId, hours, payRate, wages);
     
-    cout << setprecision(2) << fixed;
-    cout << "Employee ID number and wages below: " << endl;
-    for (int i = 0; i < NUMBER_OF_EMPLOYEES; i++)
-    {
-        cout << "Wages for Employee #" << empId[i]
-             << " = $"
-             << wages[i]
-             << endl;
-    }
-    
+    displayEmployeeInfo(NUMBER_OF_EMPLOYEES, empId, wages);
+
     return 0;
 }
 
@@ -116,4 +97,42 @@ double inputValidate(double user_number, double condition_number)
     }
 
     return user_number;
+}
+
+void getEmployeeInfo(const int NUMBER_OF_EMPLOYEES, 
+                     int empId[],
+                     double hours[],
+                     double payRate[],
+                     double wages[])
+{
+        for (int i = 0; i < NUMBER_OF_EMPLOYEES; i++)
+    {
+        cout << "Enter info for employee #" << empId[i] << " :" << endl; 
+
+        cout << "hours worked =  ";
+        hours[i] = inputValidate(hours[i]);
+
+        cout << "pay rate     = $";
+        payRate[i] = inputValidate(payRate[i]);
+
+        wages[i] = hours[i] * payRate[i];
+
+        cout << endl;
+    }
+}
+
+void displayEmployeeInfo(const int NUMBER_OF_EMPLOYEES, 
+                         const int empId[], 
+                         const double wages[])
+{
+    cout << setprecision(2) << fixed;
+    cout << "Employee ID number and wages below: " << endl;
+    for (int i = 0; i < NUMBER_OF_EMPLOYEES; i++)
+    {
+        cout << "Wages for Employee #" << empId[i]
+             << " = $"
+             << wages[i]
+             << endl;
+    }
+
 }

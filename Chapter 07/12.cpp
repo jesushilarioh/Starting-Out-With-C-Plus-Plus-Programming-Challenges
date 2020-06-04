@@ -1,13 +1,3 @@
-/************************************************************
- *
- *   13. Grade Book Modification
- * 
- *  Modify the grade book application in Programming 
- *  Challenge 13 so it drops each student’s lowest 
- *  score when determining the test score averages and 
- *  letter grades.
- *
- *************************************************************/
 #include <iostream>
 
 using namespace std;
@@ -18,7 +8,6 @@ const int NUMBER_OF_STUDENTS = 5;
 double inputValidate(double);
 void getStudentTestScores(double[]);
 double calculateAverageOfArray(const double[], int);
-double findLowest(const double[], int);
 char getAverageLetterGrade(double);
 void getStudentNames(string[]);
 void getAllTestScores(const string[],
@@ -59,76 +48,9 @@ int main()
                                 student3TestScores,
                                 student4TestScores,
                                 student5TestScores);
-    
+
     return 0;
-}
-
-// 6. Input Validation: Do not accept test scores less than 0 or greater than 100.
-double inputValidate(double number)
-{
-    while(!(cin >> number) || (number < 0 || number > 100))
-    {
-        cout << "Error. A number from 0 thru 100 must be entered: ";
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-
-    return number;
-}
-
-void getStudentTestScores(double array[])
-{
-    for (int i = 0; i < NUMBER_OF_TESTS; i++)
-    {
-        cout << "Test #" << (i + 1) << ": ";
-        array[i] = inputValidate(array[i]);
-    }
-}
-
-double calculateAverageOfArray(const double array[], int ARRAY_SIZE)
-{
-    double sum = 0;
-
-    for (int i = 0; i < ARRAY_SIZE; i++)
-        sum += array[i];
-
-    double lowest_grade = findLowest(array, ARRAY_SIZE);
-    sum -= lowest_grade;
-
-    return sum / (ARRAY_SIZE - 1);
-}
-
-double findLowest(const double array[], int ARRAY_SIZE)
-{
-    double lowest_number = array[0];
-
-    for (int i = 1; i < ARRAY_SIZE; i++)
-    {
-        if (array[i] <= lowest_number)
-            lowest_number = array[i];
-        
-    }
-    
-    return lowest_number;
-}
-
-char getAverageLetterGrade(double average)
-{
-    char letter;
-
-    if (average <= 100 && average >= 90)
-        letter = 'A';
-    else if (average < 90 && average >= 80)
-        letter = 'B';
-    else if (average < 80 && average >= 70)
-        letter = 'C';
-    else if (average < 70 && average >= 60)
-        letter = 'D';
-    else if (average < 60 && average >= 0)
-        letter = 'F';
-    
-    return letter;
-}
+} // END int main()
 
 void getStudentNames(string studentNames[])
 {
@@ -136,7 +58,7 @@ void getStudentNames(string studentNames[])
     for(int i = 0; i < NUMBER_OF_STUDENTS; i++)
     {
         cout << "Student " << (i + 1) << " name: ";
-        getline(cin, studentNames[i]);
+        getline(cin, studentNames[i]); // Jesus Hernandez
     }
 }
 
@@ -161,6 +83,27 @@ void getAllTestScores(const string studentNames[],
 
     cout << "\nEnter test scores for " << studentNames[4] << endl;
     getStudentTestScores(student5TestScores);
+}
+
+void getStudentTestScores(double array[])
+{
+    for (int i = 0; i < NUMBER_OF_TESTS; i++)
+    {
+        cout << "Test #" << (i + 1) << ": ";
+        array[i] = inputValidate(array[i]);
+    }
+}
+
+double inputValidate(double number)
+{
+    while(!(cin >> number) || (number < 0 || number > 100))
+    {
+        cout << "Error. A number from 0 thru 100 must be entered: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    return number;
 }
 
 void calculateAndDisplayAverages(const string studentNames[],
@@ -209,4 +152,32 @@ void calculateAndDisplayAverages(const string studentNames[],
     average_letter_grade = getAverageLetterGrade(average);
     cout << "Letter grade = " << average_letter_grade << endl;
     cout << endl;
+}
+
+double calculateAverageOfArray(const double array[], int ARRAY_SIZE)
+{
+    double sum = 0;
+
+    for (int i = 0; i < ARRAY_SIZE; i++)
+        sum += array[i];
+
+    return sum / ARRAY_SIZE;
+}
+
+char getAverageLetterGrade(double average)
+{
+    char letter;
+
+    if (average <= 100 && average >= 90)
+        letter = 'A';
+    else if (average < 90 && average >= 80)
+        letter = 'B';
+    else if (average < 80 && average >= 70)
+        letter = 'C';
+    else if (average < 70 && average >= 60)
+        letter = 'D';
+    else if (average < 60 && average >= 0)
+        letter = 'F';
+    
+    return letter;
 }

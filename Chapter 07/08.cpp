@@ -4,8 +4,8 @@ using namespace std;
 const int GRID_SIZE = 3; 
 
 bool isLoShuMagicSquare(const double[][GRID_SIZE]);
-double sumOfEachRow(const double[][GRID_SIZE]);
-double sumOfEachColumn(const double[][GRID_SIZE]);
+bool sumOfEachRow(const double[][GRID_SIZE]);
+bool sumOfEachColumn(const double[][GRID_SIZE]);
 double sumOfDiagonalTopLeftToRight(const double[][GRID_SIZE]);
 double sumOfDiagonalTopRightToLeft(const double[][GRID_SIZE]);
 
@@ -20,40 +20,46 @@ int main()
                                                  {8, 1, 6}};
 
     cout << "Array is";
-    cout << (isLoShuMagicSquare(grid_array_2) ? " " : " NOT ");
+    cout << (isLoShuMagicSquare(grid_array_1) ? " " : " NOT ");
     cout << "a Lo Shu Magic Square!" 
          << endl;
     
     return 0;
 }
 
-double sumOfEachRow(const double array[][GRID_SIZE])
+bool sumOfEachRow(const double array[][GRID_SIZE])
 {
     double total;
+    bool local_boolean = false;
 
     for(int row = 0; row < GRID_SIZE; row++)
     {
         total = 0;
+
         for(int column = 0; column < GRID_SIZE; column++)
             total += array[row][column];
 
-        // cout << "total for row " << (row + 1) << " = " << total << endl;
+        local_boolean = total == 15 ? true : false;
+
     }
-    return total;
+    return local_boolean;
 }
 
-double sumOfEachColumn(const double array[][GRID_SIZE])
+bool sumOfEachColumn(const double array[][GRID_SIZE])
 {
     double total;
+    bool local_boolean = false;
+    
     for(int columns = 0; columns < GRID_SIZE; columns++)
     {
         total = 0;
         for (int row = 0; row < GRID_SIZE; row++)
             total += array[row][columns];
 
-        // cout << "total for columns " << (columns + 1) << " = " << total << endl;
+        local_boolean = total == 15 ? true : false;
+
     }
-    return total;
+    return local_boolean;
 }
 
 double sumOfDiagonalTopLeftToRight(const double array[][GRID_SIZE])
@@ -99,8 +105,8 @@ double sumOfDiagonalTopRightToLeft(const double array[][GRID_SIZE])
 bool isLoShuMagicSquare(const double array[][GRID_SIZE])
 {
     if(
-        sumOfEachRow(array)              == 15 &&
-        sumOfEachColumn(array)           == 15 &&
+        sumOfEachRow(array) &&
+        sumOfEachColumn(array) &&
         sumOfDiagonalTopLeftToRight(array)  == 15 &&
         sumOfDiagonalTopRightToLeft(array)  == 15
        )

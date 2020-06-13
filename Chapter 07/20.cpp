@@ -77,6 +77,7 @@
  *      is sold.
  *
  *************************************************************/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -97,10 +98,11 @@ int main()
     double seat_prices[ROWS];
     getValuesFromFile(seat_prices, "seating_prices.txt");
 
-    char seating_chart[15][30];
-    getValuesFromFile(seating_chart, "seating_chart.txt");     
-    
-    int menu_choice, seats_sold = 0;
+    char seating_chart[ROWS][COLUMNS];
+    getValuesFromFile(seating_chart, "seating_chart.txt"); 
+
+    int menu_choice, 
+        seats_sold = 0;
     char user_choice;
     double total_ticket_sales = 0;
 
@@ -118,7 +120,6 @@ int main()
             displaySeatingPrices(seat_prices);
 
         }
-        
         else if (menu_choice == 2)
         {
             cout << "Menu choice = " << menu_choice << endl;
@@ -127,7 +128,6 @@ int main()
             displaySeatingChart(seating_chart);
 
         }
-        
         else if (menu_choice == 3)
         {
             cout << "Menu choice = " << menu_choice << endl;
@@ -180,17 +180,16 @@ int main()
             }
 
         }
-        
         else if (menu_choice == 4)
         {
             cout << "Menu choice = " << menu_choice << endl;
             cout << "Number of seats sold = " << seats_sold << endl;
         }
-        
         else if (menu_choice == 5)
         {
             cout << "Menu choice = " << menu_choice << endl;
             int seats_available = 0;
+
             for (int row = 0; row < ROWS; row++)
             {
                 for (int column = 0; column < COLUMNS; column++)
@@ -203,11 +202,11 @@ int main()
                 seats_available = 0;
             }
         }
-        
         else if (menu_choice == 6)
         {
             cout << "Menu choice = " << menu_choice << endl;
             int seats_available = 0;
+
             for (int row = 0; row < ROWS; row++)
             {
                 for (int column = 0; column < COLUMNS; column++)
@@ -222,37 +221,22 @@ int main()
                  << seats_available 
                  << endl;
         }
-        
         else if (menu_choice == 7)
         {
             cout << "Menu choice = " << menu_choice << endl;
             cout << "Number of seats sold = " << seats_sold << endl;
             cout << "Total ticket sales = $" << total_ticket_sales << endl;
         }
-        
         else if (menu_choice == 8)
         {
             cout << "Menu choice = " << menu_choice << endl;
         }
         
+
     } while (menu_choice != 8);
-
+    
     return 0;
-}
-
-void displayMenu()
-{
-    cout << "\nChoose from menu: " << endl
-         << "1. Seat Prices" << endl
-         << "2. Seating Chart" << endl
-         << "3. Purchase a seat" << endl
-         << "4. See how many seats have sold" << endl
-         << "5. See how many seats are available in each row" << endl
-         << "6. See how many seats are available in the entire auditorium" << endl 
-         << "7. View ticket sales" << endl
-         << "8. Quit Program." << endl
-         << endl;
-}
+} // END int main()
 
 void getValuesFromFile(double array[], string file_name)
 {
@@ -272,15 +256,6 @@ void getValuesFromFile(double array[], string file_name)
 
     }
     
-}
-
-void displaySeatingPrices(const double array[])
-{
-    for (int i = 0; i < ROWS; i++)
-        cout << "Row #" << (i + 1) << " = $" << array[i] << " " << endl;
-
-    cout << endl;
-
 }
 
 void getValuesFromFile(char array[][COLUMNS], string file_name)
@@ -308,12 +283,35 @@ void getValuesFromFile(char array[][COLUMNS], string file_name)
     }
 }
 
+void displayMenu()
+{
+    cout << "\nChoose from menu: " << endl
+         << "1. Seat Prices" << endl
+         << "2. Seating Chart" << endl
+         << "3. Purchase a seat" << endl
+         << "4. See how many seats have sold" << endl
+         << "5. See how many seats are available in each row" << endl
+         << "6. See how many seats are available in the entire auditorium" << endl 
+         << "7. View ticket sales" << endl
+         << "8. Quit Program." << endl
+         << endl;
+}
+
+void displaySeatingPrices(const double array[])
+{
+    for (int i = 0; i < ROWS; i++)
+        cout << "Row #" << (i + 1) << " = $" << array[i] << " " << endl;
+
+    cout << endl;
+
+}
+
 void displaySeatingChart(const char array[][COLUMNS])
 {
     for (int row = 0; row < ROWS; row++)
     {
         for (int column = 0; column < COLUMNS; column++)
-            cout << array[row][column] << ' ';
+            cout << array[row][column];
 
         cout << endl;
 

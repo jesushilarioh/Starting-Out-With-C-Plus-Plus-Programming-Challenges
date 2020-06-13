@@ -85,15 +85,6 @@ void getAllTestScores(const string studentNames[],
     getStudentTestScores(student5TestScores);
 }
 
-void getStudentTestScores(double array[])
-{
-    for (int i = 0; i < NUMBER_OF_TESTS; i++)
-    {
-        cout << "Test #" << (i + 1) << ": ";
-        array[i] = inputValidate(array[i]);
-    }
-}
-
 double inputValidate(double number)
 {
     while(!(cin >> number) || (number < 0 || number > 100))
@@ -104,6 +95,15 @@ double inputValidate(double number)
     }
 
     return number;
+}
+
+void getStudentTestScores(double array[])
+{
+    for (int i = 0; i < NUMBER_OF_TESTS; i++)
+    {
+        cout << "Test #" << (i + 1) << ": ";
+        array[i] = inputValidate(array[i]);
+    }
 }
 
 void calculateAndDisplayAverages(const string studentNames[],

@@ -1,10 +1,34 @@
-14. Lottery Application
-Write a program that simulates a lottery. The program should have an array of five integers named lottery and should generate a random number in the range of 0 through 9 for each element in the array. The user should enter five digits, which should be stored in an integer array named user. The program is to compare the correspond- ing elements in the two arrays and keep a count of the digits that match. For example, the following shows the lottery array and the user array with sample numbers stored in each. There are two matching digits (elements 2 and 4).
+20. Theater Seating
+This program should be designed and written by a team of students. Here are some suggestions:
+• One student should design function main, which will call the other functions in the program. The remainder of the functions will be designed by other members of the team.
+• The requirements of the program should be analyzed so each student is given about the same work load.
+• The parameters and return types of each function should be decided in advance.
+• The program can be implemented as a multi-file program, or all the functions can be cut and pasted into the main file.
 
-lottery array:
-74913
+Here is the assignment: Write a program that can be used by a small theater to sell tickets for performances. The theater’s auditorium has 15 rows of seats, with 30 seats in each row. The program should display a screen that shows which seats are available and which are taken. For example, the following screen shows a chart depicting each seat in the theater. Seats that are taken are represented by an * symbol, and seats that are available are represented by a # symbol:
 
-user array:
-42973
+                   Seats
+       123456789012345678901234567890
+Row 01 ***###***###*########*****####
+Row 02 ####*************####*******##
+Row 03 **###**********########****###
+Row 04 **######**************##******
+Row 05 ********#####*********########
+Row 06 ##############************####
+Row 07 #######************###########
+Row 08 ************##****############
+Row 09 #########*****############****
+Row 10 #####*************############
+Row 11 #**********#################**
+Row 12 #############********########*
+Row 13 ###***********########**######
+Row 14 ##############################
+Row 15 ##############################
 
-The program should display the random numbers stored in the lottery array and the number of matching digits. If all of the digits match, display a message proclaiming the user as a grand prize winner.
+Here is a list of tasks this program must perform:
+• When the program begins, it should ask the user to enter the seat prices for each row. The prices can be stored in a separate array. (Alternatively, the prices may be read from a file.)
+• Once the prices are entered, the program should display a seating chart similar to the one shown above. The user may enter the row and seat numbers for tickets being sold. Every time a ticket or group of tickets is purchased, the program should display the total ticket prices and update the seating chart.
+• The program should keep a total of all ticket sales. The user should be given an option of viewing this amount.
+• The program should also give the user an option to see a list of how many seats have been sold, how many seats are available in each row, and how many seats are available in the entire auditorium.
+
+Input Validation: When tickets are being sold, do not accept row or seat numbers that do not exist. When someone requests a particular seat, the program should make sure that seat is available before it is sold.

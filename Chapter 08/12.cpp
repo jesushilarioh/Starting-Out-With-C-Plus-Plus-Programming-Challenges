@@ -1,8 +1,237 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <iomanip>
+
 using namespace std;
+
+const int NUMBER_OF_WEEKS = 52;
+const int NUMBER_OF_MONTHS = 12;
+
+void displayVector(vector<double>);
+void displayVector(vector<int>);
+void displayVector(vector<string>);
+void displayParallelVectors(vector<double>, vector<string>, vector<int>);
+void getContentsFromFile(vector<int> &, vector<double> &, string);
+void calculateAverageMonthlyPrice(vector<int>, 
+                                  vector<double>, 
+                                  vector<double> &);
+void selectionSort(vector<double> &, vector<string> &, vector<int> &);
+void swap(double &, double &);
+void swap(string &, string &);
+void swap(int &, int &);
+void writeToAFile(vector<string>, vector<double>, string, vector<int>);
 
 int main()
 {
+    vector<double> gas_prices;
+    vector<int> month_numbers;
+    vector<string> month_names = {"January", "February", "March", "April", 
+                                  "May", "June", "July", "August", 
+                                  "September", "October", "November", "December"};
+
+    vector<double> average_price_per_month;
+
+    getContentsFromFile(month_numbers, gas_prices, "1994_Weekly_Gas_Averages.txt");
+
+    calculateAverageMonthlyPrice(month_numbers, gas_prices, average_price_per_month);
+
+    month_numbers.clear();
+    for (int i = 0; i < NUMBER_OF_MONTHS; i++)
+        month_numbers.push_back(i + 1);
+
+    displayParallelVectors(average_price_per_month, month_names, month_numbers);
+    
+    selectionSort(average_price_per_month, month_names, month_numbers);
+
+    displayParallelVectors(average_price_per_month, month_names, month_numbers);
+
+    writeToAFile(month_names, 
+                 average_price_per_month, 
+                 "1994_Gas_Averages_Lowest_to_Highest.txt", 
+                 month_numbers);
+
+    // displayVector(month_numbers);
+    // displayVector(gas_prices);
+    // displayVector(average_price_per_month);
 
     return 0;
 } // End int main()
+
+void displayVector(vector<double> vector_array)
+{
+    cout << endl;
+    for (int i = 0; i < vector_array.size(); i++)
+        cout << (i + 1) << ": " << vector_array[i] << endl;
+    cout << endl;
+}
+
+void displayVector(vector<int> vector_array)
+{
+    cout << endl;
+    for (int i = 0; i < vector_array.size(); i++)
+        cout << (i + 1) << ": " << vector_array[i] << endl;
+    cout << endl;
+}
+
+void displayVector(vector<string> vector_array)
+{
+    cout << endl;
+    for (int i = 0; i < vector_array.size(); i++)
+        cout << (i + 1) << ": " << vector_array[i] << endl;
+    cout << endl;
+}
+
+void displayParallelVectors(vector<double> average_price_per_month, 
+                            vector<string> month_names, 
+                            vector<int> month_numbers)
+{
+    cout << setprecision(3) << fixed << endl;
+    for (int i = 0; i < average_price_per_month.size(); i++)
+    {
+        cout << average_price_per_month[i] << ": (" 
+             << month_numbers[i] << ") -> " 
+             << month_names[i] 
+             << endl;
+    }
+    cout << endl;
+}
+
+void getContentsFromFile(vector<int> &vector_array_1, 
+                         vector<double> &vector_array_2, 
+                         string file_name)
+{
+    // 1. Open
+    ifstream inputFile;
+    inputFile.open(file_name);
+
+    
+    if (inputFile.fail())
+    {
+        cout << "Invalid File Name." << endl;
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        // 2. Process
+        double element;
+
+        for (int i = 0; i < NUMBER_OF_WEEKS; i++)
+        {
+            inputFile >> element;
+            vector_array_1.push_back(element);
+
+            inputFile >> element;
+            vector_array_2.push_back(element);
+        }  
+
+        // 3. Close
+        inputFile.close();
+    }
+    
+}
+
+void calculateAverageMonthlyPrice(vector<int> month_numbers, 
+                                  vector<double> gas_prices, 
+                                  vector<double> &average_price_per_month)
+{
+    double sum,
+           denominator;
+
+    for (int month = 0; month < NUMBER_OF_MONTHS; month++)
+    {
+        sum = 0;
+        denominator = 0;
+
+        for (int week = 0; week < NUMBER_OF_WEEKS; week++)
+        {
+            if (month_numbers[week] == (month + 1))
+            {
+                sum += gas_prices[week];
+                denominator++;
+            }
+        }
+        average_price_per_month.push_back(sum / denominator);
+    } 
+}
+
+void selectionSort(vector<double> &average_price_per_month, 
+                   vector<string> &month_names, 
+                   vector<int> &month_numbers)
+{
+    int min_index;
+    double min_price;
+    string temporary_month_name;
+    int temporary_month_number;
+
+    // 0 ------> 10
+    for (int start_index = 0; 
+         start_index < (average_price_per_month.size() - 1); 
+         start_index++)
+    {
+        min_index = start_index;
+        min_price = average_price_per_month[start_index];
+        temporary_month_name = month_names[start_index];
+        temporary_month_number = month_numbers[start_index];
+        
+        // 1 ---------> 11 ////// 100, 3
+        for (int index = start_index + 1; 
+             index < average_price_per_month.size(); 
+             index++)
+        {
+            if (average_price_per_month[index] < min_price)
+            {
+                min_index = index;
+                min_price = average_price_per_month[index];
+                temporary_month_name = month_names[index];
+                temporary_month_number = month_numbers[index];
+            }
+        }
+        swap(average_price_per_month[min_index], average_price_per_month[start_index]);
+        swap(month_names[min_index], month_names[start_index]);
+        swap(month_numbers[min_index], month_numbers[start_index]);
+    }
+}
+
+void swap(double &a, double &b)
+{
+    double temp = a;
+    a = b;
+    b = temp;
+}
+void swap(string &a, string &b)
+{
+    string temp = a;
+    a = b;
+    b = temp;
+}
+void swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void writeToAFile(vector<string> month_names, 
+                  vector<double> average_price_per_month, 
+                  string file_name, 
+                  vector<int> month_numbers)
+{
+    // 1. Open
+    ofstream outputFile;
+    outputFile.open(file_name);
+
+    // 2. Process
+    outputFile << setprecision(3) << fixed << endl;
+    for (int i = 0; i < average_price_per_month.size(); i++)
+    {
+        outputFile << average_price_per_month[i] << ": (" 
+                   << month_numbers[i] << ") -> " 
+                   << month_names[i] 
+                   << endl;
+    }
+    outputFile << endl;
+
+    // 3. Close
+    outputFile.close();
+}

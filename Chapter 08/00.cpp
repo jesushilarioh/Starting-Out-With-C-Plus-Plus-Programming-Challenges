@@ -36,8 +36,9 @@ int main()
     // 1. Write a program that reads the gas prices from the file,
     vector<double> gas_prices;
     vector<int> month_numbers;
-    vector<string> month_names = {"January", "February", "March", "April", "May", "June",
-                                "July", "August", "September", "October", "November", "December"};
+    vector<string> month_names = {"January", "February", "March", "April", 
+                                  "May", "June", "July", "August", 
+                                  "September", "October", "November", "December"};
 
     vector<double> average_price_per_month;
     
@@ -57,7 +58,10 @@ int main()
 
     displayParallelVectors(average_price_per_month, month_names, month_numbers);
 
-    writeToAFile(month_names, average_price_per_month, "1994_Gas_Averages_Lowest_to_Highest.txt", month_numbers);
+    writeToAFile(month_names, 
+                 average_price_per_month, 
+                 "1994_Gas_Averages_Lowest_to_Highest.txt", 
+                 month_numbers);
 
     // 4. Then, the program should create another file that lists the names of the month, along with each month's 
     //  average gas price, sorted from the lowest to highest.
@@ -88,15 +92,24 @@ void displayVector(vector<string> vector_array)
     cout << endl;
 }
 
-void displayParallelVectors(vector<double> average_price_per_month, vector<string> month_names, vector<int> month_numbers)
+void displayParallelVectors(vector<double> average_price_per_month, 
+                            vector<string> month_names, 
+                            vector<int> month_numbers)
 {
     cout << setprecision(3) << fixed << endl;
     for (int i = 0; i < average_price_per_month.size(); i++)
-        cout << average_price_per_month[i] << ": (" << month_numbers[i] << ") -> " << month_names[i] << endl;
+    {
+        cout << average_price_per_month[i] << ": (" 
+             << month_numbers[i] << ") -> " 
+             << month_names[i] 
+             << endl;
+    }
     cout << endl;
 }
 
-void getContentsFromFile(vector<int> &vector_array_1, vector<double> &vector_array_2, string file_name)
+void getContentsFromFile(vector<int> &vector_array_1, 
+                         vector<double> &vector_array_2, 
+                         string file_name)
 {
     ifstream inputFile;
 
@@ -117,14 +130,16 @@ void getContentsFromFile(vector<int> &vector_array_1, vector<double> &vector_arr
     }
     else
     {
-        cout << "Invalid file. See line #" << __LINE__ << endl << endl;
+        cout << "Invalid file." << endl;
         exit(EXIT_FAILURE);
     }
         
     
 }
 
-void calculateAverageMonthlyPrice(vector<int> month_numbers, vector<double> gas_prices, vector<double> &average_price_per_month)
+void calculateAverageMonthlyPrice(vector<int> month_numbers, 
+                                  vector<double> gas_prices, 
+                                  vector<double> &average_price_per_month)
 {
     double average,
            sum,
@@ -147,7 +162,10 @@ void calculateAverageMonthlyPrice(vector<int> month_numbers, vector<double> gas_
     }
 }
 
-void writeToAFile(vector<string> month_names, vector<double> average_price_per_month, string file_name, vector<int> month_numbers)
+void writeToAFile(vector<string> month_names, 
+                  vector<double> average_price_per_month, 
+                  string file_name, 
+                  vector<int> month_numbers)
 {
     ofstream outputFile;
 
@@ -156,26 +174,37 @@ void writeToAFile(vector<string> month_names, vector<double> average_price_per_m
     outputFile << setprecision(3) << fixed;
     
     for (int i = 0; i < average_price_per_month.size(); i++)
-        outputFile << average_price_per_month[i] << ": (" << month_numbers[i] << ") -> " << month_names[i] << endl;
-
+    {
+        outputFile << average_price_per_month[i] << ": (" 
+                   << month_numbers[i] << ") -> " 
+                   << month_names[i] 
+                   << endl;
+    }
+        
     outputFile.close();
 }
 
-void selectionSort(vector<double> &average_price_per_month, vector<string> &month_names, vector<int> &month_numbers)
+void selectionSort(vector<double> &average_price_per_month, 
+                   vector<string> &month_names, 
+                   vector<int> &month_numbers)
 {
     int min_index;
     double min_price;
     string temporary_month_name;
     int temporary_month_number;
 
-    for (int start_index = 0; start_index < (average_price_per_month.size() - 1); start_index++)
+    for (int start_index = 0; 
+         start_index < (average_price_per_month.size() - 1); 
+         start_index++)
     {
         min_index = start_index;
         min_price = average_price_per_month[start_index];
         temporary_month_name = month_names[start_index];
         temporary_month_number = month_numbers[start_index];
 
-        for (int index = start_index + 1; index < average_price_per_month.size(); index++)
+        for (int index = start_index + 1;
+             index < average_price_per_month.size();
+             index++)
         {
             if (average_price_per_month[index] < min_price)
             {

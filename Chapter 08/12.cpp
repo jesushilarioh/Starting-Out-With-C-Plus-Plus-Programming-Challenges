@@ -1,3 +1,17 @@
+/**
+ * 
+ * 12. Sorted List of 1994 Gas Prices
+ * 
+ * In the student sample programs for this book, you will find a test file names 1994_
+ * Weekly_Gas_Averages.txt. The file contains the average gas price for each week in the
+ * year 1994. (There are 52 lines in the file. Line 1 contians the average price for week 1; 
+ * line 2 contains the average price for week 2, and so forth.) Write a program that reads
+ * the gas prices from the file, and calculates the average gas price for each month. (To get 
+ * the average price for a given month, calculate the average of the average weekly prices 
+ * for that month.) Then, the program should create another file that lists the names of 
+ * the month_numbers, along with each month's average gas price, sorted from the lowest to highest.
+ * 
+ **/
 #include <iostream>
 #include <vector>
 #include <fstream>

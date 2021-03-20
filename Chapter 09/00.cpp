@@ -1,61 +1,136 @@
 /**
+ * 13. Movie Statistics
  * 
- * 12. Element Shifter
+ * Write a program that can be used to gather 
+ * statistical data about the number of movies 
+ * college students see in a month. The program should 
+ * perform the following steps:
  * 
- * Write a function that accepts an int array 
- * and the array’s size as arguments. The function 
- * should create a new array that is one element 
- * larger than the argument array. The first element 
- * of the new array should be set to 0. Element 0 of 
- * the argument array should be copied to element 1 
- * of the new array, element 1 of the argument array 
- * should be copied to element 2 of the new array, and 
- * so forth. The function should return a pointer to 
- * the new array.
+ * A) Ask the user how many students were surveyed. An 
+ * array of integers with this many elements should then 
+ * be dynamically allocated.
  * 
- */ 
+ * B) Allow the user to enter the number of movies 
+ * each student saw into the array.
+ * 
+ * C) Calculate and display the average, median, and 
+ * mode of the values entered. (Use the functions 
+ * you wrote in Problems 8 and 9 to calculate the 
+ * median and mode.)
+ * 
+ * Input Validation: Do not accept negative numbers for input.
+ *
+ */
 #include <iostream>
 using namespace std;
 
-int *createOneNewElement(int *, const int);
-void displayArray(int *, const int);
+int inputValidate(int);
+void getMovieInfo(int *, const int);
+int getAverage(int *, const int);
+int getMedian(int *, const int);
+int getMode(int *, const int);
 
 int main()
 {
-    const int SIZE = 5;
-    int numbers[SIZE] = { 2, 4, 6, 8, 10 };
+    // A) Ask the user how many students were surveyed. An 
+    // array of integers with this many elements should then 
+    // be dynamically allocated.
+    cout << "How many students surveyed? ";
+    int number_of_students = inputValidate(number_of_students);
+    int *movieInfo = new int[number_of_students];
+    
+    // B) Allow the user to enter the number of movies 
+    // each student saw into the array.
+    getMovieInfo(movieInfo, number_of_students);
 
-    int *oneElementAdded = createOneNewElement(numbers, SIZE);
+    // C) Calculate and display the average, median, and 
+    //  mode of the values entered. (Use the functions 
+    //  you wrote in Problems 8 and 9 to calculate the 
+    //  median and mode.)
+    int average = getAverage(movieInfo, number_of_students);
+    int median = getMedian(movieInfo, number_of_students);
+    int mode = getMode(movieInfo, number_of_students);
 
-    displayArray(numbers, SIZE);
+    cout << "Averge = " << average << endl;
+    cout << "Median = " << median << endl;
+
+    cout << "Mode = ";
+    if (mode != -1)
+        cout << mode;
+    else
+        cout << "no mode";   
     cout << endl;
-    displayArray(oneElementAdded, (SIZE + 1));
-    cout << endl;
 
-    delete [] oneElementAdded;
-    oneElementAdded = nullptr; // 0x0
+    delete [] movieInfo;
+    movieInfo = nullptr; // 0x0
 
     return 0;
 }
-int *createOneNewElement(int *array, const int SIZE)
+int inputValidate(int number)
 {
-    const int NEW_SIZE = SIZE + 1;
-    int *newArray = new int[NEW_SIZE];
-
-    for (int i = 0; i < NEW_SIZE; i++)
+    while(!(cin >> number) || number < 0)
     {
-        if (i == 0)
-            *(newArray + i) = 0;
-        else
-            *(newArray + i) = array[i - 1];
+        cout << "Error. Postive numbers only." << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return number;
+}
+void getMovieInfo(int *movieInfo, const int number_of_students)
+{
+    cout << "Enter numbers of movies watched: " << endl;
+    for (int i = 0; i < number_of_students; i++)
+    {
+        cout << "Student #" << (i + 1) << ": ";
+        *(movieInfo + i) = inputValidate(*(movieInfo + i));
+    }
+    
+}
+int getAverage(int *array, const int SIZE)
+{
+    int sum;
+
+    for (int i = 0; i < SIZE; i++)
+        sum += *(array + i);
+    
+
+    return sum / SIZE;
+}
+int getMedian(int *array, const int SIZE)
+{
+    int median = 0;
+
+    if (SIZE % 2 != 0)
+        median = *(array + (SIZE / 2));
+    else
+        median = (*(array + ((SIZE - 1) / 2)) + *(array + (SIZE / 2))) / 2;
+
+    return median;
+}
+int getMode(int *array, const int SIZE)
+{    
+    int mode, maxCount = 0, i , j;
+
+    for (i = 0; i < SIZE; i++)
+    {
+        int count = 0;
+
+        for (j = 0; j < SIZE; j++)
+        {
+            if(*(array + j) == *(array + i))
+                count++;
+        }
+
+        if (count > maxCount)
+        {
+            maxCount = count;
+            mode = *(array + i);
+        }
+        else if (maxCount == 1)
+        {
+            mode = -1;
+        }
     }
 
-    return newArray;
-}
-
-void displayArray(int *array, const int SIZE)
-{
-    for (int i = 0; i < SIZE; i++)
-        cout << *(array + i) << " "; // array[i]
-    
+    return mode;
 }

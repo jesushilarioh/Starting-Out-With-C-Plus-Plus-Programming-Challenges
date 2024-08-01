@@ -1,3 +1,7 @@
+/*
+3. Test Average
+Write a program that asks for five test scores. The program should calculate the aver- age test score and display it. The number displayed should be formatted in fixed-point notation, with one decimal point of precision.
+*/
 #include <iostream>
 #include <iomanip>
 
@@ -5,7 +9,6 @@ using namespace std;
 
 int main()
 {
-    // Variables
     const int NUM_OF_SCORES = 5;
     
     float score_1,
@@ -16,33 +19,33 @@ int main()
           average,
           total;
     
-    // Describe Program
-    cout << "\nThis program will calculate the average of ";
-    cout << "5 test scores.\n";
-    cout << "\nPress enter to continue";
+    cout << "\nEnter 5 test scores." << endl
+         << "Press enter to continue";
     cin.get();
-    cout << endl;
     
-    // Ask user to enter 5 test scores
-    cout << "Enter score #1: ";
+    cout << "\nScore 1: ";
     cin >> score_1;
-    cout << "Enter score #2: ";
+    cout << "Score 2: ";
     cin >> score_2;
-    cout << "Enter score #3: ";
+    cout << "Score 3: ";
     cin >> score_3;
-    cout << "Enter score #4: ";
+    cout << "Score 4: ";
     cin >> score_4;
-    cout << "Enter score #5: ";
+    cout << "Score 5: ";
     cin >> score_5;
-    
-    // Calculate average test score
-    total = score_1 + score_2 + score_3 + score_4 + score_5;
+
+    total = score_1 + 
+            score_2 + 
+            score_3 + 
+            score_4 + 
+            score_5;
+
     average = total / NUM_OF_SCORES;
     
-    cout << setprecision(1) << fixed;
-    cout << "\nThe average test score is ";
-    cout << average << '\n' << endl;
+    cout << setprecision(1) << fixed
+         << "\nThe average test score is "
+         << average << '\n' 
+         << endl;
             
-    // Terminate Program
     return 0;
 }

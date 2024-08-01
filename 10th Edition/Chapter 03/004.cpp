@@ -1,3 +1,9 @@
+/*
+4. Average Rainfall
+Write a program that calculates the average rainfall for three months. The program should ask the user to enter the name of each month, such as June or July, and the amount of rain (in inches) that fell each month. The program should display a message similar to the following:
+
+The average rainfall for June, July, and August is 6.72 inches.
+*/
 #include <iostream>
 #include <iomanip>
 
@@ -8,56 +14,49 @@ int main()
     // Variables
     const int NUM_OF_MONTHS = 3;
     
-    string month_1,
-           month_2,
-           month_3;
+    string month1,
+           month2,
+           month3;
     
-    float rainfall_month_1,
-          rainfall_month_2,
-          rainfall_month_3,
+    float rainfallMonth1,
+          rainfallMonth2,
+          rainfallMonth3,
           total,
           average;
     
-    // Explain program, ask user to press enter to continue
-    cout << endl;
-    cout << "---------------------------------------------";
-    cout << "\nThis program calculates the average";
-    cout << " rainfall for three months." << endl;
-    cout << "---------------------------------------------";
-    cout << "\n\nPress Enter to continue." << endl;
+    cout << "\n3 month rainfall average." << endl
+         << "Press Enter to continue." << endl;
     cin.get();
     
-    // Ask user for month and rainfall
-    cout << "Enter the name for month 1: ";
-    cin >> month_1;
-    cout << "How many inches of rain fell for " << month_1;
-    cout << ": ";
-    cin >> rainfall_month_1;
+    cout << "Month 1 name: "  << endl;
+    cin >> month1;
+    cout << "Rain amount: " << endl;
+    cin >> rainfallMonth1;
     
-    cout << "Enter the name for month 2: ";
-    cin >> month_2;
-    cout << "How many inches of rain fell for " << month_2;
-    cout << ": ";
-    cin >> rainfall_month_2;
+    cout << "\nMonth 2 name: "  << endl;
+    cin >> month2;
+    cout << "Rain amount: " << endl;
+    cin >> rainfallMonth2;
     
-    cout << "Enter the name for month 3: ";
-    cin >> month_3;
-    cout << "How many inches of rain fell for " << month_3;
-    cout << ": ";
-    cin >> rainfall_month_3;
+    cout << "\nMonth 3 name: "  << endl;
+    cin >> month3;
+    cout << "Rain amount: " << endl;
+    cin >> rainfallMonth3;
     
-    // Calculate total & average
-    total = rainfall_month_1 + rainfall_month_2 + rainfall_month_3;
+    total = rainfallMonth1 + 
+            rainfallMonth2 + 
+            rainfallMonth3;
+
     average = total / NUM_OF_MONTHS;
     
-    // Display rainfall average
-    cout << setprecision(2) << fixed;
-    cout << "\nThe average rainfall for ";
-    cout << month_1 << ", ";
-    cout << month_2 << ", and ";
-    cout << month_3 << " is ";
-    cout << average << " inches.\n" << endl;
+    cout << setprecision(2) << fixed
+         << "\nRainfall:" << endl
+         << month1 << ": " << rainfallMonth1 << " in. " << endl
+         << month2 << ": " << rainfallMonth2 << " in. " << endl
+         << month3 << ": " << rainfallMonth3 << " in. " << endl
+         << "\nTotal rainfall = " << total << endl
+         << "Average rainfall = " << average << endl
+         << endl;
 
-    // Terminate Program
     return 0;
 }

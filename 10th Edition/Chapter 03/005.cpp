@@ -1,42 +1,41 @@
+/*
+5. Male and Female Percentages
+Write a program that asks the user for the number of males and the number of females registered in a class. The program should display the percentage of males and females in the class.
+
+Hint: Suppose there are 8 males and 12 females in a class. There are 20 students in the class. The percentage of males can be calculated as 8/20 = 0.4, or 40 percent. The percentage of females can be calculated as 12/20 = 0.6, or 60 percent.
+*/
 #include <iostream>
 #include <iomanip>
 
 using namespace std;
 
 int main()
-{
-    // Variables
-    const int HUNDRED = 100;
-    
+{   
     int males,
-        females,
-        total;
+        females;
     
-    float per_males,
-          per_females;
+    float malePercentage,
+          femalePercentage,
+          total; 
     
-    // Ask user for number of males and females
-    cout << endl;
-    cout << "How many males in the class: ";
+    cout << "\nHow many males in the class: ";
     cin >> males;
-    cout << "How many females: ";
+    cout << "\nHow many females: ";
     cin >> females;
-    cout << endl;
     
-    // Calculate percentages
     total = males + females;
     
-    per_males = (males / static_cast<float>(total)) * HUNDRED;
-
-    per_females = (females / static_cast<float>(total)) * HUNDRED;
+    malePercentage = (males / total) * 100;
+    femalePercentage = (females / total) * 100;
     
-    // Display percentage
     cout << setprecision(1) << fixed;
-    cout << "There are " << total << " students." << endl;
-    cout << "The percentage of males is %" << per_males;
-    cout << ",\nwhile, the percentage of females is %";
-    cout << per_females << ".\n" << endl;
+    cout << endl
+         << "Males      = " << males            << endl
+         << "Females    = " << females          << endl
+         << "Total      = " << total            << endl
+         << "Male %     = " << malePercentage   << endl
+         << "Female %   = " << femalePercentage << endl
+         << endl;
     
-    // Terminate Program
     return 0;
 }

@@ -22,7 +22,7 @@ int main()
          << "Gallons = " << gallons << endl
          << "Miles   = " << miles   << endl
          << "MPG     = " << MPG     << endl
-         << endl;
+         << endl; 
 
     return 0;
 }

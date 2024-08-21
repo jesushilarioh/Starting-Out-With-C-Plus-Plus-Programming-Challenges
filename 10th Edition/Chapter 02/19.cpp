@@ -31,6 +31,8 @@ int main()
          << "Denver     = " << denverTemp << "˚F " << endl
          << "Phoenix    = " << phoenixTemp << "˚F " << endl
          << endl;
+
+     // Screen Record
     
     return 0;
 }

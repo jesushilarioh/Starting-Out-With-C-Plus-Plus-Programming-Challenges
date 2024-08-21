@@ -1,31 +1,25 @@
+/*
+11. Automobile Costs
+Write a program that asks the user to enter the monthly costs for the following expenses incurred from operating his or her automobile: loan payment, insurance, gas, oil, tires, and maintenance. The program should then display the total monthly cost of these expenses, and the total annual cost of these expenses.
+*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
 int main()
 {
-    // Constant
     const int TWELVE_MONTHS = 12;
     
-    // Variables
     float loan_payment,
           insurance,
           gas,
           oil,
           tires,
           maintenance,
-          total_monthly_exp,
+          monthly_expenses,
           annual_cost;
-    /**
-     * asks the user to enter the monthly
-     * costs for the following expenses incurred
-     * from operating his or her automobile loan
-     * payment, insurance, gas, oil, tires,and
-     * maintenance.
-     */
-    cout << "\nEnter the following monthly costs for your";
-    cout << "\nautomobile: " << endl;
-    cout << "Loan Payment : $";
+
+    cout << "\nEnter the following monthly costs for your automobile: \nLoan Payment : $";
     cin >> loan_payment;
     cout << "Insurance    : $";
     cin >> insurance;
@@ -37,21 +31,19 @@ int main()
     cin >> tires;
     cout << "Maintenae    : $";
     cin >> maintenance;
-    cout << endl;
     
+    monthly_expenses =  loan_payment + 
+                        insurance + 
+                        gas + 
+                        oil + 
+                        tires + 
+                        maintenance;
+
+    annual_cost = monthly_expenses  * TWELVE_MONTHS;
     
-    // Calculate total monthly cost of these expenses
-    total_monthly_exp = loan_payment + insurance + gas + oil + tires + maintenance;
-    
-    // Calculate total annual cost of these expenses
-    annual_cost = total_monthly_exp  * TWELVE_MONTHS;
-    
-    // display the total monthly cost of these expenses
-    cout << "\nMonthly car expenses = $" << total_monthly_exp;
-    
-    // display the total annual cost of these expenses
-    cout << "\nTotal annual cost = $" << annual_cost;
-    cout << endl;
+    cout << "\nMonthly car expenses = $" << monthly_expenses 
+         << "\nTotal annual cost    = $" << annual_cost 
+         << endl; 
     
     return 0;
 }

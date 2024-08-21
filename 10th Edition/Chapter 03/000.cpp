@@ -7,3 +7,6 @@ int main()
 
     return 0;
 }
+
+
+// discord c++ help invite: https://discord.gg/7NUTVfZT

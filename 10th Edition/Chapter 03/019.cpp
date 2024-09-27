@@ -3,7 +3,7 @@
 
 The monthly payment on a loan may be calculated by the following formula:
 
-    Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
+Payment = [Rate * (1 + Rate)^N / ((1 + Rate)^N - 1)] * L
 
 Rate is the monthly interest rate, which is the annual interest rate divided by 12. (12 percent annual interest would be 1 percent monthly interest.) N is the number of payments, and L is the amount of the loan. Write a program that asks for these values then displays a report similar to:
 

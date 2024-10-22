@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {   
     // Variables
-    string username,
+    string name,
            city,
            college,
            profession,
@@ -13,10 +13,8 @@ int main()
            pet_name,
            age;
 
-    // ask the user to enter info
-    cout << endl;
-    cout << "What is your name? ";
-    getline(cin, username);
+    cout << "\nWhat is your name? ";
+    getline(cin, name);
 
     cout << "Your age? ";
     getline(cin, age);
@@ -36,28 +34,16 @@ int main()
     cout << "Pet's name? ";
     getline(cin, pet_name);
 
-    cout << endl;
 
-    // Display user info in a sentence
-    cout << "There once was a person named ";
-    cout << username;
-
-    cout << " who lived in ";
-    cout << city;
-
-    cout << ". At the age of " << age << ", ";
-    cout << username;
-
-    cout << " went to college at " << college << ". ";
-    cout << username;
-
-    cout << " graduated and went to work as a ";
-    cout << profession;
-
-    cout << ". Then, " << username << " adopted a(n) ";
-    cout << animal << " named " << pet_name;
-
-    cout << ". They both lived happily ever after!\n" << endl;
+    cout << endl 
+         << "Name:          " << name       << endl
+         << "City:          " << city       << endl
+         << "Age:           " << age        << endl
+         << "College:       " << college    << endl
+         << "Profession:    " << profession << endl
+         << "Animal:        " << animal     << endl
+         << "Pet Name:      " << pet_name   << endl
+         << endl;
 
     return 0;
 }

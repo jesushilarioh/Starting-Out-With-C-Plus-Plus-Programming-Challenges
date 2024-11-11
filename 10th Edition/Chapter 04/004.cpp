@@ -30,10 +30,8 @@ int main()
     cout << "What is the width of the second rectangle : ";
     cin >> w2;
 
-
     rectangle1 = l1 * w1;
     rectangle2 = l2 * w2;
-
 
     cout << endl;
 

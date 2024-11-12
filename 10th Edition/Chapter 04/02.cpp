@@ -10,7 +10,6 @@ int main()
     cout << "Enter a number between 1 and 10: ";
     cin >> userNum;
 
-
     switch (userNum)
     {
         case 1:

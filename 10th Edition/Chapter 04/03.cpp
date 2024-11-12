@@ -18,10 +18,12 @@ int main()
     cout << "Enter the year (e.g. 1978 = 78, 1991 = 91, 2016 = 16): ";
     cin >> year;
 
+
     string magic = (month * day == year) ? "magic" : "not magic";
 
     cout << "\nThe date is " << magic << endl
          << endl;
+
 
     return 0;
 }
